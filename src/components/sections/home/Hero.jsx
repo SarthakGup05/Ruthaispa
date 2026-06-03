@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Whatsapp } from "../../icons/whatsapp";
-import { motion, AnimatePresence } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 // Example Data Structure
 const SLIDES = [
@@ -18,7 +16,6 @@ const SLIDES = [
 export default function VideoSlider({ slides = SLIDES }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const videoRefs = useRef([]);
-  const isMobile = useIsMobile();
 
   // Auto-progress slide every 8 seconds
   useEffect(() => {
@@ -80,50 +77,12 @@ export default function VideoSlider({ slides = SLIDES }) {
     };
   }, [currentIndex]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: isMobile ? 0.05 : 0.2,
-        delayChildren: isMobile ? 0.02 : 0.1,
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: isMobile ? 10 : 35 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
-    },
-  };
-
-  const subtitleVariants = {
-    hidden: { opacity: 0, y: isMobile ? 8 : 25 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
-    },
-  };
-
-  const buttonsVariants = {
-    hidden: { opacity: 0, y: isMobile ? 5 : 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
-    },
-  };
-
   return (
     <section
       className="relative w-full h-screen overflow-hidden bg-background flex items-center justify-center group"
       aria-label="Video Showcase"
     >
-      {/* Video Layers */}
+      {/* Video Layers / Static Background */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -148,77 +107,89 @@ export default function VideoSlider({ slides = SLIDES }) {
             defaultMuted
             loop
             autoPlay
-            preload="auto"
+            preload="metadata"
+            poster="/spa_interior.webp"
           >
-            <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            {/* Prioritize WebM format for modern browsers */}
             <source src={slide.videoSrc} type="video/webm" />
+            <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
           {/* Text Content & Action Buttons */}
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
-            <AnimatePresence mode="wait">
-              {index === currentIndex && (
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  variants={containerVariants}
-                  className="flex flex-col items-center justify-center text-center max-w-4xl"
-                >
-                  <motion.h2
-                    variants={titleVariants}
-                    style={{ willChange: "transform, opacity" }}
-                    className="text-4xl md:text-7xl font-light tracking-[0.15em] text-white uppercase mb-4"
-                  >
-                    {slide.title}
-                  </motion.h2>
-                  <motion.p
-                    variants={subtitleVariants}
-                    style={{ willChange: "transform, opacity" }}
-                    className="text-sm md:text-lg font-serif tracking-[0.2em] text-[#E6D2A7] uppercase mb-8"
-                  >
-                    {slide.subtitle}
-                  </motion.p>
+            {index === currentIndex && (
+              <div className="flex flex-col items-center justify-center text-center max-w-4xl">
+                <h2 className="text-4xl md:text-7xl font-light tracking-[0.15em] text-white uppercase mb-4 animate-title-reveal">
+                  {slide.title}
+                </h2>
+                <p className="text-sm md:text-lg font-serif tracking-[0.2em] text-[#E6D2A7] uppercase mb-8 animate-subtitle-reveal">
+                  {slide.subtitle}
+                </p>
 
-                  {/* Call and WhatsApp Buttons */}
-                  <motion.div
-                    variants={buttonsVariants}
-                    style={{ willChange: "transform, opacity" }}
-                    className="flex flex-col sm:flex-row gap-4 items-center justify-center"
+                {/* Call and WhatsApp Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-buttons-reveal">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="group bg-[#E6D2A7] text-[#0b5a60] hover:bg-[#E6D2A7]/95 hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(230,210,167,0.35)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
                   >
-                    <Button
-                      asChild
-                      size="lg"
-                      className="group bg-[#E6D2A7] text-[#0b5a60] hover:bg-[#E6D2A7]/95 hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(230,210,167,0.35)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
+                    <a href="tel:+917449962261">
+                      <Phone className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                      Call Now
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="group border-white/30 text-white bg-black/25 hover:bg-white hover:text-[#0b5a60] hover:border-white hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(255,255,255,0.15)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
+                  >
+                    <a
+                      href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session."
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <a href="tel:+917449962261">
-                        <Phone className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
-                        Call Now
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="group border-white/30 text-white bg-black/25 hover:bg-white hover:text-[#0b5a60] hover:border-white hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(255,255,255,0.15)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
-                    >
-                      <a
-                        href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Whatsapp size={20} className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
-                        WhatsApp
-                      </a>
-                    </Button>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                      <Whatsapp size={20} className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                      WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}
+
+      {/* CSS-based reveal transitions for mount */}
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-title-reveal {
+          animation: fadeInUp 0.9s cubic-bezier(0.21, 1.02, 0.43, 1.01) forwards;
+          will-change: transform, opacity;
+        }
+        .animate-subtitle-reveal {
+          animation: fadeInUp 0.9s cubic-bezier(0.21, 1.02, 0.43, 1.01) 0.15s forwards;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+        .animate-buttons-reveal {
+          animation: fadeInUp 0.9s cubic-bezier(0.21, 1.02, 0.43, 1.01) 0.3s forwards;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+      `}</style>
     </section>
   );
 }
+
+
