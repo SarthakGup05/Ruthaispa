@@ -45,20 +45,22 @@ export default function FloatingLotus({ className = "", size = 120 }) {
       </svg>
 
       <style>{`
-        @keyframes lotus-drift {
-          0%, 100% { transform: translateY(0px) rotate(-2deg); }
-          33%      { transform: translateY(-8px) rotate(1deg); }
-          66%      { transform: translateY(4px) rotate(-1deg); }
-        }
-        @keyframes petal-glow {
-          0%, 100% { fill-opacity: 0.04; }
-          50%      { fill-opacity: 0.12; }
-        }
-        .animate-lotus-drift {
-          animation: lotus-drift 12s ease-in-out infinite;
-        }
-        .animate-petal-glow {
-          animation: petal-glow 5s ease-in-out infinite;
+        @media (min-width: 768px) {
+          @keyframes lotus-drift {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            33%      { transform: translateY(-8px) rotate(1deg); }
+            66%      { transform: translateY(4px) rotate(-1deg); }
+          }
+          @keyframes petal-glow {
+            0%, 100% { fill-opacity: 0.04; }
+            50%      { fill-opacity: 0.12; }
+          }
+          .animate-lotus-drift {
+            animation: lotus-drift 12s ease-in-out infinite;
+          }
+          .animate-petal-glow {
+            animation: petal-glow 5s ease-in-out infinite;
+          }
         }
       `}</style>
     </div>

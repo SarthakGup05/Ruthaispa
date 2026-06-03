@@ -64,12 +64,14 @@ export default function MandalaWatermark({ className = "", size = 500 }) {
       </svg>
 
       <style>{`
-        @keyframes mandala-rotate {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-        .animate-mandala-rotate {
-          animation: mandala-rotate 120s linear infinite;
+        @media (min-width: 768px) {
+          @keyframes mandala-rotate {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+          }
+          .animate-mandala-rotate {
+            animation: mandala-rotate 120s linear infinite;
+          }
         }
       `}</style>
     </div>

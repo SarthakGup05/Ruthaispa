@@ -47,21 +47,23 @@ export default function IncenseSmoke({ className = "", height = 300 }) {
       </svg>
 
       <style>{`
-        @keyframes smoke-rise {
-          0%   { stroke-dashoffset: 0; opacity: 0.6; }
-          100% { stroke-dashoffset: -120; opacity: 0.3; }
-        }
-        @keyframes smoke-rise-slow {
-          0%   { stroke-dashoffset: 0; opacity: 0.4; }
-          100% { stroke-dashoffset: -80; opacity: 0.15; }
-        }
-        .animate-smoke-rise {
-          stroke-dasharray: 30 20;
-          animation: smoke-rise 10s linear infinite;
-        }
-        .animate-smoke-rise-slow {
-          stroke-dasharray: 20 30;
-          animation: smoke-rise-slow 14s linear infinite;
+        @media (min-width: 768px) {
+          @keyframes smoke-rise {
+            0%   { stroke-dashoffset: 0; opacity: 0.6; }
+            100% { stroke-dashoffset: -120; opacity: 0.3; }
+          }
+          @keyframes smoke-rise-slow {
+            0%   { stroke-dashoffset: 0; opacity: 0.4; }
+            100% { stroke-dashoffset: -80; opacity: 0.15; }
+          }
+          .animate-smoke-rise {
+            stroke-dasharray: 30 20;
+            animation: smoke-rise 10s linear infinite;
+          }
+          .animate-smoke-rise-slow {
+            stroke-dasharray: 20 30;
+            animation: smoke-rise-slow 14s linear infinite;
+          }
         }
       `}</style>
     </div>
