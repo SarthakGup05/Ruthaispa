@@ -60,28 +60,30 @@ export default function ZenCircles({ className = "", size = 280 }) {
       </svg>
 
       <style>{`
-        @keyframes zen-spin {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-        @keyframes zen-spin-reverse {
-          from { transform: rotate(360deg); }
-          to   { transform: rotate(0deg); }
-        }
-        @keyframes zen-breathe {
-          0%, 100% { r: 38; stroke-opacity: 0.2; }
-          50%      { r: 42; stroke-opacity: 0.35; }
-        }
-        .animate-zen-spin {
-          animation: zen-spin 45s linear infinite;
-          transform-origin: center;
-        }
-        .animate-zen-spin-reverse {
-          animation: zen-spin-reverse 60s linear infinite;
-          transform-origin: center;
-        }
-        .animate-zen-breathe {
-          animation: zen-breathe 6s ease-in-out infinite;
+        @media (min-width: 768px) {
+          @keyframes zen-spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+          }
+          @keyframes zen-spin-reverse {
+            from { transform: rotate(360deg); }
+            to   { transform: rotate(0deg); }
+          }
+          @keyframes zen-breathe {
+            0%, 100% { r: 38; stroke-opacity: 0.2; }
+            50%      { r: 42; stroke-opacity: 0.35; }
+          }
+          .animate-zen-spin {
+            animation: zen-spin 45s linear infinite;
+            transform-origin: center;
+          }
+          .animate-zen-spin-reverse {
+            animation: zen-spin-reverse 60s linear infinite;
+            transform-origin: center;
+          }
+          .animate-zen-breathe {
+            animation: zen-breathe 6s ease-in-out infinite;
+          }
         }
       `}</style>
     </div>

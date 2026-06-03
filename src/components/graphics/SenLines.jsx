@@ -60,22 +60,24 @@ export default function SenLines({ className = "" }) {
       </svg>
 
       <style>{`
-        @keyframes sen-flow {
-          0%   { stroke-dashoffset: 0; }
-          100% { stroke-dashoffset: -80; }
-        }
-        .animate-sen-flow {
-          stroke-dasharray: 20 30;
-          animation: sen-flow 8s linear infinite;
-        }
-        .animate-sen-flow-delayed {
-          stroke-dasharray: 15 25;
-          animation: sen-flow 12s linear infinite;
-          animation-delay: 2s;
-        }
-        .animate-sen-flow-slow {
-          stroke-dasharray: 10 40;
-          animation: sen-flow 18s linear infinite;
+        @media (min-width: 768px) {
+          @keyframes sen-flow {
+            0%   { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -80; }
+          }
+          .animate-sen-flow {
+            stroke-dasharray: 20 30;
+            animation: sen-flow 8s linear infinite;
+          }
+          .animate-sen-flow-delayed {
+            stroke-dasharray: 15 25;
+            animation: sen-flow 12s linear infinite;
+            animation-delay: 2s;
+          }
+          .animate-sen-flow-slow {
+            stroke-dasharray: 10 40;
+            animation: sen-flow 18s linear infinite;
+          }
         }
       `}</style>
     </div>
