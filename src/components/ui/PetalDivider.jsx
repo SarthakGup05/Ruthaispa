@@ -111,46 +111,48 @@ export default function PetalDivider({ className = '' }) {
 
       {/* Keyframes for petal animations */}
       <style>{`
-        @keyframes petal-float-1 {
-          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-          50%      { transform: translateY(-4px) rotate(8deg); opacity: 0.5; }
+        @media (min-width: 768px) {
+          @keyframes petal-float-1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50%      { transform: translateY(-4px) rotate(8deg); opacity: 0.5; }
+          }
+          @keyframes petal-float-2 {
+            0%, 100% { transform: translateY(0) rotate(-35deg); opacity: 0.25; }
+            50%      { transform: translateY(-3px) rotate(-28deg); opacity: 0.4; }
+          }
+          @keyframes petal-float-3 {
+            0%, 100% { transform: translateY(0) rotate(35deg); opacity: 0.25; }
+            50%      { transform: translateY(-3px) rotate(28deg); opacity: 0.4; }
+          }
+          @keyframes petal-float-4 {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50%      { transform: translateY(-4px) rotate(-8deg); opacity: 0.5; }
+          }
+          @keyframes petal-scatter-1 {
+            0%, 100% { transform: translate(0, 0) rotate(-25deg); opacity: 0.2; }
+            50%      { transform: translate(-3px, -4px) rotate(-15deg); opacity: 0.35; }
+          }
+          @keyframes petal-scatter-2 {
+            0%, 100% { transform: translate(0, 0) rotate(30deg); opacity: 0.15; }
+            50%      { transform: translate(3px, -3px) rotate(40deg); opacity: 0.3; }
+          }
+          @keyframes petal-scatter-3 {
+            0%, 100% { transform: translate(0, 0) rotate(50deg); opacity: 0.15; }
+            50%      { transform: translate(-2px, 3px) rotate(60deg); opacity: 0.25; }
+          }
+          @keyframes center-petal-glow {
+            0%, 100% { fill-opacity: 0.06; }
+            50%      { fill-opacity: 0.14; }
+          }
+          .animate-petal-float-1   { animation: petal-float-1   5s ease-in-out infinite; }
+          .animate-petal-float-2   { animation: petal-float-2   6s ease-in-out infinite; animation-delay: 0.5s; }
+          .animate-petal-float-3   { animation: petal-float-3   6s ease-in-out infinite; animation-delay: 1s; }
+          .animate-petal-float-4   { animation: petal-float-4   5s ease-in-out infinite; animation-delay: 1.5s; }
+          .animate-petal-scatter-1 { animation: petal-scatter-1  7s ease-in-out infinite; }
+          .animate-petal-scatter-2 { animation: petal-scatter-2  8s ease-in-out infinite; animation-delay: 2s; }
+          .animate-petal-scatter-3 { animation: petal-scatter-3  9s ease-in-out infinite; animation-delay: 3s; }
+          .animate-center-petal-glow { animation: center-petal-glow 4s ease-in-out infinite; }
         }
-        @keyframes petal-float-2 {
-          0%, 100% { transform: translateY(0) rotate(-35deg); opacity: 0.25; }
-          50%      { transform: translateY(-3px) rotate(-28deg); opacity: 0.4; }
-        }
-        @keyframes petal-float-3 {
-          0%, 100% { transform: translateY(0) rotate(35deg); opacity: 0.25; }
-          50%      { transform: translateY(-3px) rotate(28deg); opacity: 0.4; }
-        }
-        @keyframes petal-float-4 {
-          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-          50%      { transform: translateY(-4px) rotate(-8deg); opacity: 0.5; }
-        }
-        @keyframes petal-scatter-1 {
-          0%, 100% { transform: translate(0, 0) rotate(-25deg); opacity: 0.2; }
-          50%      { transform: translate(-3px, -4px) rotate(-15deg); opacity: 0.35; }
-        }
-        @keyframes petal-scatter-2 {
-          0%, 100% { transform: translate(0, 0) rotate(30deg); opacity: 0.15; }
-          50%      { transform: translate(3px, -3px) rotate(40deg); opacity: 0.3; }
-        }
-        @keyframes petal-scatter-3 {
-          0%, 100% { transform: translate(0, 0) rotate(50deg); opacity: 0.15; }
-          50%      { transform: translate(-2px, 3px) rotate(60deg); opacity: 0.25; }
-        }
-        @keyframes center-petal-glow {
-          0%, 100% { fill-opacity: 0.06; }
-          50%      { fill-opacity: 0.14; }
-        }
-        .animate-petal-float-1   { animation: petal-float-1   5s ease-in-out infinite; }
-        .animate-petal-float-2   { animation: petal-float-2   6s ease-in-out infinite; animation-delay: 0.5s; }
-        .animate-petal-float-3   { animation: petal-float-3   6s ease-in-out infinite; animation-delay: 1s; }
-        .animate-petal-float-4   { animation: petal-float-4   5s ease-in-out infinite; animation-delay: 1.5s; }
-        .animate-petal-scatter-1 { animation: petal-scatter-1  7s ease-in-out infinite; }
-        .animate-petal-scatter-2 { animation: petal-scatter-2  8s ease-in-out infinite; animation-delay: 2s; }
-        .animate-petal-scatter-3 { animation: petal-scatter-3  9s ease-in-out infinite; animation-delay: 3s; }
-        .animate-center-petal-glow { animation: center-petal-glow 4s ease-in-out infinite; }
       `}</style>
     </div>
   );
