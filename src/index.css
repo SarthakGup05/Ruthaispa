@@ -161,4 +161,45 @@
   .animate-pulse-subtle {
     animation: none !important;
   }
+
+  /* Disable expensive backdrop blurs on mobile for smooth scrolling */
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Make backgrounds opaque to ensure text remains readable without backdrop blur */
+  .bg-background\/90,
+  .bg-background\/95,
+  .bg-background\/80,
+  .bg-background\/85,
+  .bg-background\/70 {
+    background-color: var(--color-background) !important;
+  }
+
+  .bg-card\/50,
+  .bg-card\/40,
+  .bg-card\/30,
+  .bg-card\/20,
+  .bg-card\/60,
+  .bg-card\/65 {
+    background-color: var(--color-card) !important;
+  }
+
+  .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .dark .bg-card\/40,
+  .dark .bg-card\/50,
+  .dark .bg-card\/30,
+  .dark .bg-card\/20 {
+    background-color: var(--color-card) !important;
+  }
 }

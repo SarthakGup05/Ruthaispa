@@ -35,6 +35,7 @@ export default function VideoSlider({ slides = SLIDES }) {
       if (!video) return;
       if (index === currentIndex) {
         // Enforce muted and playsInline programmatically to guarantee mobile browser compatibility
+        video.defaultMuted = true;
         video.muted = true;
         video.playsInline = true;
         video.setAttribute("muted", "");
@@ -47,6 +48,36 @@ export default function VideoSlider({ slides = SLIDES }) {
         video.pause();
       }
     });
+  }, [currentIndex]);
+
+  // Interaction fallback to start playback on iOS Safari / Low Power Mode
+  useEffect(() => {
+    const handleInteraction = () => {
+      videoRefs.current.forEach((video, index) => {
+        if (video && index === currentIndex && video.paused) {
+          video.defaultMuted = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.setAttribute("muted", "");
+          video.setAttribute("playsinline", "");
+          
+          video.play().catch(() => {
+            // Silent catch
+          });
+        }
+      });
+      // Cleanup listener after first interaction
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+    };
+
+    window.addEventListener("touchstart", handleInteraction, { passive: true });
+    window.addEventListener("click", handleInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+    };
   }, [currentIndex]);
 
   const containerVariants = {
@@ -104,16 +135,23 @@ export default function VideoSlider({ slides = SLIDES }) {
           <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
 
           <video
-            ref={(el) => (videoRefs.current[index] = el)}
+            ref={(el) => {
+              videoRefs.current[index] = el;
+              if (el) {
+                el.defaultMuted = true;
+                el.muted = true;
+              }
+            }}
             className="absolute inset-0 w-full h-full object-cover"
             playsInline
             muted
+            defaultMuted
             loop
             autoPlay
             preload="auto"
           >
-            <source src={slide.videoSrc} type="video/webm" />
             <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            <source src={slide.videoSrc} type="video/webm" />
             Your browser does not support the video tag.
           </video>
 
