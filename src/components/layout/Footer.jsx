@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Heart } from 'lucide-react';
 import { InstagramIcon } from '../icons/lucide-instagram';
 import { Whatsapp } from '../icons/whatsapp';
 import Logo from '../ui/Logo';
@@ -131,7 +131,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="border-t border-border/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-medium">
           <p>© {currentYear} RUA Thai Spa Wellness. All rights reserved.</p>
-          <div className="flex gap-6">
+          <p className="flex items-center gap-1 normal-case tracking-normal font-sans text-xs text-muted-foreground">
+            Made with <Heart className="w-3 h-3 text-destructive fill-destructive animate-pulse mx-0.5" /> by{" "}
+            <a
+              href="https://saarthak.xyz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-foreground hover:text-primary transition-colors hover:underline ml-1"
+            >
+              Sarthak Gupta
+            </a>
+          </p>
+          <div className="flex gap-6 font-medium">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
