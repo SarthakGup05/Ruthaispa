@@ -7,7 +7,7 @@ import { Whatsapp } from "../../icons/whatsapp";
 const SLIDES = [
   {
     id: 1,
-    videoSrc: "/massage1.mp4",
+    videoSrc: "/massage.webm",
     title: "Deep Restoration",
     subtitle: "Ancient therapies for modern living",
   },
@@ -57,12 +57,16 @@ export default function VideoSlider({ slides = SLIDES }) {
 
           <video
             ref={(el) => (videoRefs.current[index] = el)}
-            src={slide.videoSrc}
             className="absolute inset-0 w-full h-full object-cover"
             playsInline
             muted
             loop
-          />
+            autoPlay
+          >
+            <source src={slide.videoSrc} type="video/webm" />
+            <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
           {/* Text Content & Action Buttons */}
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
