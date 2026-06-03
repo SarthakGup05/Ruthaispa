@@ -1,32 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Compass, Flower, Leaf } from 'lucide-react';
 import PetalDivider from '../../ui/PetalDivider';
 import MandalaWatermark from '../../graphics/MandalaWatermark';
 import ZenCircles from '../../graphics/ZenCircles';
-
-// Custom hook to handle scroll animations
-const useElementOnScreen = (options) => {
-  const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(entry.isIntersecting);
-        // Once visible, stop observing to keep element visible
-        if (containerRef.current) observer.unobserve(containerRef.current);
-      }
-    }, options);
-    
-    if (containerRef.current) observer.observe(containerRef.current);
-
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
-  }, [containerRef, options]);
-
-  return [containerRef, isVisible];
-};
+import { FadeIn, StaggerContainer, StaggerItem } from '../../ui/motion';
 
 const philosophyPoints = [
   {
@@ -47,11 +24,8 @@ const philosophyPoints = [
 ];
 
 export default function Philosophy() {
-  const [sectionRef, isVisible] = useElementOnScreen({ threshold: 0.2 });
-
   return (
     <section 
-      ref={sectionRef}
       id="why-choose-us" 
       className="relative py-12 md:py-16 px-6 overflow-hidden bg-background transition-colors duration-500 z-0"
     >
@@ -73,10 +47,9 @@ export default function Philosophy() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* --- LEFT SIDE: HIGH-END PICTURE CONTAINER --- */}
-          <div 
-            className={`md:col-span-5 relative group transition-all duration-1000 ease-out transform ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-            }`}
+          <FadeIn 
+            direction="right"
+            className="md:col-span-5 relative group"
           >
             {/* Soft decorative ring behind image */}
             <div className="absolute -inset-4 border border-primary/20 rounded-full scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 pointer-events-none" />
@@ -104,16 +77,12 @@ export default function Philosophy() {
 
             {/* Floating Flower Icon 2 */}
             <Flower className="absolute -bottom-6 -left-10 w-16 h-16 text-[#b25338]/20 animate-float-slow opacity-60" strokeWidth={1} />
-          </div>
+          </FadeIn>
 
           {/* --- RIGHT SIDE: CONTENT & STACKED CARDS --- */}
           <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
             {/* Header */}
-            <div 
-              className={`transition-all duration-1000 delay-300 transform ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
+            <FadeIn direction="up" delay={0.2} className="w-full">
               <span className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-primary font-semibold mb-4 block">
                 Why RUA Thai Spa
               </span>
@@ -126,48 +95,47 @@ export default function Philosophy() {
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-2 font-light leading-relaxed mb-6">
                 We preserve and honour ancient Thai healing arts, providing an immersive, calming sensory environment to align and restore your inner vitality.
               </p>
-            </div>
+            </FadeIn>
 
             {/* Vertically Stacked Cards */}
-            <div className="space-y-6 w-full max-w-3xl">
+            <StaggerContainer className="space-y-6 w-full max-w-3xl" staggerChildren={0.2} delayChildren={0.4}>
               {philosophyPoints.map((point, index) => {
                 const Icon = point.icon;
                 return (
-                  <div 
+                  <StaggerItem 
                     key={index}
-                    className={`group relative p-0.5 rounded-3xl overflow-hidden transition-all duration-1000 transform ease-out ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                    }`}
-                    style={{ transitionDelay: `${500 + index * 200}ms` }}
+                    direction="up"
                   >
-                    {/* Animated Gradient Border on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
-                    
-                    {/* Inner Card */}
-                    <div className="relative bg-card/40 backdrop-blur-lg border border-white/5 rounded-[22px] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 transition-all duration-300 group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
+                    <div className="group relative p-0.5 rounded-3xl overflow-hidden transition-all duration-300">
+                      {/* Animated Gradient Border on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
                       
-                      {/* Icon Container */}
-                      <div className="flex-shrink-0 relative">
-                        <div className="absolute -inset-1 bg-primary/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="relative w-16 h-16 rounded-full flex items-center justify-center border border-primary/30 bg-background/50 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 ease-out z-10">
-                          <Icon className="w-7 h-7" strokeWidth={1.25} />
+                      {/* Inner Card */}
+                      <div className="relative bg-card/40 backdrop-blur-lg border border-white/5 rounded-[22px] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 transition-all duration-300 group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
+                        
+                        {/* Icon Container */}
+                        <div className="flex-shrink-0 relative">
+                          <div className="absolute -inset-1 bg-primary/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="relative w-16 h-16 rounded-full flex items-center justify-center border border-primary/30 bg-background/50 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 ease-out z-10">
+                            <Icon className="w-7 h-7" strokeWidth={1.25} />
+                          </div>
+                        </div>
+
+                        {/* Text Content */}
+                        <div className="flex-grow text-center sm:text-left">
+                          <h3 className="text-xl font-serif text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                            {point.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed font-light">
+                            {point.description}
+                          </p>
                         </div>
                       </div>
-
-                      {/* Text Content */}
-                      <div className="flex-grow text-center sm:text-left">
-                        <h3 className="text-xl font-serif text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                          {point.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed font-light">
-                          {point.description}
-                        </p>
-                      </div>
                     </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerContainer>
           </div>
 
         </div>
