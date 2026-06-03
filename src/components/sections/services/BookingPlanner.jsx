@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Phone, Clock, Sparkles } from 'lucide-react';
 import { Whatsapp } from '../../icons/whatsapp';
 import PetalDivider from "../../ui/PetalDivider";
+import { FadeIn, ScaleIn } from "../../ui/motion";
 
 export default function BookingPlanner({
   selectedService,
@@ -120,7 +121,7 @@ Please check availability for me!`;
       <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[50%] bg-primary/5 dark:bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16 flex flex-col items-center">
+        <FadeIn direction="up" className="text-center mb-16 flex flex-col items-center">
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold">
             Interactive Booking
           </span>
@@ -132,11 +133,11 @@ Please check availability for me!`;
             Configure your custom therapy ritual, select duration and pressure
             preferences, and easily book your slot.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-background/90 dark:bg-background/70 border border-border/20 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl relative">
           {/* Left panel: Booking configuration options */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
+          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-8">
             {/* Step 1: Select Massage */}
             <div>
               <label className="text-[10px] uppercase tracking-widest font-bold block text-primary mb-4">
@@ -239,10 +240,10 @@ Please check availability for me!`;
                 ))}
               </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right panel: Live Summary & Direct Booking Buttons */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-background/95 dark:bg-background/80 border border-primary/15 hover:border-primary/30 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500">
+          <FadeIn direction="left" className="lg:col-span-5 flex flex-col justify-between bg-background/95 dark:bg-background/80 border border-primary/15 hover:border-primary/30 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500">
             {/* Card Background Image Watermark - Base Layer */}
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-[0.03] dark:opacity-[0.06] pointer-events-none -z-25"
@@ -347,7 +348,7 @@ Please check availability for me!`;
                 </a>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
 
