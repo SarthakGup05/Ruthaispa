@@ -3,6 +3,7 @@ import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Whatsapp } from "../../icons/whatsapp";
 import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Example Data Structure
 const SLIDES = [
@@ -17,6 +18,7 @@ const SLIDES = [
 export default function VideoSlider({ slides = SLIDES }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const videoRefs = useRef([]);
+  const isMobile = useIsMobile();
 
   // Auto-progress slide every 8 seconds
   useEffect(() => {
@@ -32,6 +34,12 @@ export default function VideoSlider({ slides = SLIDES }) {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
       if (index === currentIndex) {
+        // Enforce muted and playsInline programmatically to guarantee mobile browser compatibility
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        
         video.play().catch(() => {
           // Silent catch for browser autoplay restrictions
         });
@@ -46,36 +54,36 @@ export default function VideoSlider({ slides = SLIDES }) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: isMobile ? 0.05 : 0.2,
+        delayChildren: isMobile ? 0.02 : 0.1,
       },
     },
   };
 
   const titleVariants = {
-    hidden: { opacity: 0, y: 35 },
+    hidden: { opacity: 0, y: isMobile ? 10 : 35 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: [0.21, 1.02, 0.43, 1.01] },
+      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
     },
   };
 
   const subtitleVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: isMobile ? 8 : 25 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: [0.21, 1.02, 0.43, 1.01] },
+      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
     },
   };
 
   const buttonsVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: isMobile ? 5 : 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: [0.21, 1.02, 0.43, 1.01] },
+      transition: { duration: isMobile ? 0.4 : 0.9, ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01] },
     },
   };
 
@@ -102,6 +110,7 @@ export default function VideoSlider({ slides = SLIDES }) {
             muted
             loop
             autoPlay
+            preload="auto"
           >
             <source src={slide.videoSrc} type="video/webm" />
             <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
@@ -121,12 +130,14 @@ export default function VideoSlider({ slides = SLIDES }) {
                 >
                   <motion.h2
                     variants={titleVariants}
+                    style={{ willChange: "transform, opacity" }}
                     className="text-4xl md:text-7xl font-light tracking-[0.15em] text-white uppercase mb-4"
                   >
                     {slide.title}
                   </motion.h2>
                   <motion.p
                     variants={subtitleVariants}
+                    style={{ willChange: "transform, opacity" }}
                     className="text-sm md:text-lg font-serif tracking-[0.2em] text-[#E6D2A7] uppercase mb-8"
                   >
                     {slide.subtitle}
@@ -135,6 +146,7 @@ export default function VideoSlider({ slides = SLIDES }) {
                   {/* Call and WhatsApp Buttons */}
                   <motion.div
                     variants={buttonsVariants}
+                    style={{ willChange: "transform, opacity" }}
                     className="flex flex-col sm:flex-row gap-4 items-center justify-center"
                   >
                     <Button
