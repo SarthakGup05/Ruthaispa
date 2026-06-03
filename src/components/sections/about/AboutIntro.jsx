@@ -3,6 +3,7 @@ import { ShieldCheck, Award } from "lucide-react";
 import PetalDivider from "../../ui/PetalDivider";
 import FloatingLotus from "../../graphics/FloatingLotus";
 import IncenseSmoke from "../../graphics/IncenseSmoke";
+import { FadeIn, StaggerContainer, StaggerItem } from "../../ui/motion";
 
 export default function AboutIntro() {
   return (
@@ -25,7 +26,7 @@ export default function AboutIntro() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Narrative Story & Credentials */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-6 text-left">
             <div>
               <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-primary font-semibold mb-3 block">
                 Our Lineage & Story
@@ -60,36 +61,36 @@ export default function AboutIntro() {
             </div>
 
             {/* Badges / Stats grid */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border/10 mt-2">
-              <div className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+            <StaggerContainer className="grid grid-cols-3 gap-4 pt-6 border-t border-border/10 mt-2" staggerChildren={0.15} delayChildren={0.3}>
+              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   18+
                 </span>
                 <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
                   Yrs Pedigree
                 </span>
-              </div>
-              <div className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+              </StaggerItem>
+              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   100%
                 </span>
                 <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
                   Female Certified
                 </span>
-              </div>
-              <div className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+              </StaggerItem>
+              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   Organic
                 </span>
                 <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
                   Siamese Oils
                 </span>
-              </div>
-            </div>
-          </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </FadeIn>
 
           {/* Right Column: Single Visual Panel */}
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
+          <FadeIn direction="left" className="lg:col-span-5 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
             <img
               src="/about_siamese_wellness.png"
               alt="Traditional Thai Siamese Wellness Settings and Luk Prakob"
@@ -97,7 +98,7 @@ export default function AboutIntro() {
             />
             {/* Elegant gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

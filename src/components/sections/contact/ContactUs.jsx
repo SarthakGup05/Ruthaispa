@@ -1,9 +1,10 @@
 import React from "react";
-import { Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import { Whatsapp } from "../../icons/whatsapp";
 import PetalDivider from "../../ui/PetalDivider";
 import MandalaWatermark from "../../graphics/MandalaWatermark";
 import IncenseSmoke from "../../graphics/IncenseSmoke";
+import { FadeIn, StaggerContainer, StaggerItem } from "../../ui/motion";
 
 export default function ContactUs() {
   return (
@@ -22,7 +23,7 @@ export default function ContactUs() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-        <div className="text-center mb-10 flex flex-col items-center">
+        <FadeIn direction="up" className="text-center mb-10 flex flex-col items-center">
           <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-primary font-semibold mb-4">
             Directions & Bookings
           </span>
@@ -30,11 +31,14 @@ export default function ContactUs() {
             Contact Our Sanctuary
           </h2>
           <PetalDivider />
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Side: Picture panel */}
-          <div className="lg:col-span-6 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
+          <FadeIn
+            direction="right"
+            className="lg:col-span-6 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group"
+          >
             {/* Background Zooming Spa Image */}
             <img
               src="/receptionist_rua.png"
@@ -51,11 +55,15 @@ export default function ContactUs() {
                 Sanctuary Reception
               </span>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right Side: Coordinates and Call buttons */}
-          <div className="lg:col-span-6 flex flex-col gap-8">
-            <div>
+          <StaggerContainer
+            staggerChildren={0.15}
+            delayChildren={0.2}
+            className="lg:col-span-6 flex flex-col gap-8"
+          >
+            <StaggerItem direction="left">
               <h3 className="text-3xl font-serif font-normal mb-4 text-foreground leading-snug">
                 Begin Your Path to Rest
               </h3>
@@ -64,11 +72,11 @@ export default function ContactUs() {
                 with our reservations team. Let us coordinate your ideal
                 treatment times and therapy preferences.
               </p>
-            </div>
+            </StaggerItem>
 
             {/* Coordinates Details Block */}
             <div className="flex flex-col gap-6">
-              <div className="flex items-start gap-4">
+              <StaggerItem direction="left" className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary bg-primary/5 shrink-0 mt-1">
                   <MapPin className="w-5 h-5" strokeWidth={1.5} />
                 </div>
@@ -83,9 +91,9 @@ export default function ContactUs() {
                     Shop No. B216, 2nd Floor, City Centre 2, Kolkata - 700157
                   </span>
                 </div>
-              </div>
+              </StaggerItem>
 
-              <div className="flex items-start gap-4">
+              <StaggerItem direction="left" className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary bg-primary/5 shrink-0 mt-1">
                   <Clock className="w-5 h-5" strokeWidth={1.5} />
                 </div>
@@ -100,11 +108,11 @@ export default function ContactUs() {
                     Including National & Public Holidays
                   </span>
                 </div>
-              </div>
+              </StaggerItem>
             </div>
 
             {/* Contact Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-border/10">
+            <StaggerItem direction="left" className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-border/10">
               <a
                 href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session."
                 target="_blank"
@@ -122,8 +130,8 @@ export default function ContactUs() {
                 <Phone className="w-5 h-5 shrink-0 text-primary" />
                 <span>Call +91 74499 62261</span>
               </a>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </div>
     </section>
