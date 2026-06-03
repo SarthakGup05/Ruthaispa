@@ -61,8 +61,10 @@ export default function Philosophy() {
             <div className="relative overflow-hidden rounded-t-full rounded-b-3xl aspect-[3/4] shadow-2xl shadow-primary/10 border-4 border-card/50 backdrop-blur-sm group-hover:border-primary/30 transition-colors duration-500">
               {/* The Image */}
               <img 
-                src="/siam_suite.png" 
+                src="/siam_suite.webp" 
                 alt="Serene spa environment" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
               />
               

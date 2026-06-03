@@ -34,19 +34,19 @@ export default function BookingPlanner({
   ];
 
   const serviceImages = {
-    swedish: "/swedish_massage.jpg",
-    "deep-tissue": "/deep_tissue.jpg",
-    aroma: "/aroma_therapy.png",
-    balinese: "/balinese_massage.jpg",
-    thai: "/thai_massage.png",
-    "hot-compress": "/herbal_poultice.png",
-    "hot-stone": "/hot_stone.png",
-    "two-therapists": "/siam_suite.png",
-    "body-polishing": "/steam_chamber.png",
-    "head-neck-shoulder": "/tea_lounge.png",
+    swedish: "/swedish_massage.webp",
+    "deep-tissue": "/deep_tissue.webp",
+    aroma: "/aroma_therapy.webp",
+    balinese: "/balinese_massage.webp",
+    thai: "/thai_massage.webp",
+    "hot-compress": "/herbal_poultice.webp",
+    "hot-stone": "/hot_stone.webp",
+    "two-therapists": "/siam_suite.webp",
+    "body-polishing": "/steam_chamber.webp",
+    "head-neck-shoulder": "/tea_lounge.webp",
   };
 
-  const currentBgImage = serviceImages[selectedService] || "/spa_interior.png";
+  const currentBgImage = serviceImages[selectedService] || "/spa_interior.webp";
 
   const [prevBg, setPrevBg] = useState(currentBgImage);
   const [activeBg, setActiveBg] = useState(currentBgImage);

@@ -22,7 +22,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
         "Stress relief",
         "Improves circulation",
       ],
-      image: "/swedish_massage.jpg",
+      image: "/swedish_massage.webp",
     },
     {
       id: "deep-tissue",
@@ -38,7 +38,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
         "Relieves muscle knots",
         "Heals injury & stress",
       ],
-      image: "/deep_tissue.jpg",
+      image: "/deep_tissue.webp",
     },
     {
       id: "aroma",
@@ -54,7 +54,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
         "Pain & stress relief",
         "Plant extract therapy",
       ],
-      image: "/aroma_therapy.jpg",
+      image: "/aroma_therapy.webp",
     },
     {
       id: "balinese",
@@ -70,7 +70,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
         "Uses fragrant essential oils",
         "Rhythmic full-body treatment",
       ],
-      image: "/balinese_massage.jpg",
+      image: "/balinese_massage.webp",
     },
   ];
 
@@ -128,6 +128,8 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                     <img
                       src={item.image}
                       alt={item.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
