@@ -143,19 +143,21 @@ export default function Philosophy() {
 
       {/* --- Custom CSS for Keyframes --- */}
       <style jsx global>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          50% { transform: translateY(10px) translateX(10px); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 8s ease-in-out infinite;
+        @media (min-width: 768px) {
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+          }
+          @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(10px) translateX(10px); }
+          }
+          .animate-float {
+            animation: float 6s ease-in-out infinite;
+          }
+          .animate-float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+          }
         }
       `}</style>
     </section>

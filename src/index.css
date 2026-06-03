@@ -153,3 +153,12 @@
     @apply font-serif;
   }
 }
+
+@media (max-width: 767px) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-drift-right,
+  .animate-pulse-subtle {
+    animation: none !important;
+  }
+}
