@@ -9,9 +9,11 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   // Handle scroll effect for dynamic styling
   useEffect(() => {
@@ -41,11 +43,15 @@ export default function Navbar({ darkMode, setDarkMode }) {
     { name: "Contact Us", href: "#contact" },
   ];
 
+  const HeaderTag = isMobile ? "header" : motion.header;
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.21, 1.02, 0.43, 1.01] }}
+    <HeaderTag
+      {...(!isMobile && {
+        initial: { y: -80, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+        transition: { duration: 0.8, ease: [0.21, 1.02, 0.43, 1.01] }
+      })}
       className={`${headerBaseClass} ${headerScrollClass}`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
@@ -198,6 +204,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
           </Sheet>
         </div>
       </div>
-    </motion.header>
+    </HeaderTag>
   );
 }

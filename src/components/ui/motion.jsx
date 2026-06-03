@@ -17,16 +17,22 @@ export function FadeIn({
   ...props
 }) {
   const isMobile = useIsMobile();
-  const adjustedDistance = isMobile ? Math.min(distance, 10) : distance;
-  const adjustedDuration = isMobile ? Math.min(duration, 0.4) : duration;
-  const adjustedDelay = isMobile ? delay * 0.3 : delay;
-  const adjustedViewport = isMobile ? { once, margin: "-20px" } : { once, margin: "-80px" };
+
+  if (isMobile) {
+    return (
+      <div className={className} {...props}>
+        {children}
+      </div>
+    );
+  }
+
+  const adjustedViewport = { once, margin: "-80px" };
 
   const directions = {
-    up: { y: adjustedDistance },
-    down: { y: -adjustedDistance },
-    left: { x: adjustedDistance },
-    right: { x: -adjustedDistance },
+    up: { y: distance },
+    down: { y: -distance },
+    left: { x: distance },
+    right: { x: -distance },
     none: {},
   };
 
@@ -47,9 +53,9 @@ export function FadeIn({
       whileInView={animate}
       viewport={adjustedViewport}
       transition={{
-        duration: adjustedDuration,
-        delay: adjustedDelay,
-        ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01],
+        duration,
+        delay,
+        ease: [0.21, 1.02, 0.43, 1.01],
       }}
       style={{ willChange: "transform, opacity", ...props.style }}
       className={className}
@@ -73,16 +79,21 @@ export function StaggerContainer({
   ...props
 }) {
   const isMobile = useIsMobile();
-  const adjustedStagger = isMobile ? staggerChildren * 0.3 : staggerChildren;
-  const adjustedDelay = isMobile ? delayChildren * 0.3 : delayChildren;
-  const adjustedViewport = isMobile ? { once, margin: "-10px" } : { once, margin: "-50px" };
+
+  if (isMobile) {
+    return (
+      <div className={className} {...props}>
+        {children}
+      </div>
+    );
+  }
 
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: adjustedStagger,
-        delayChildren: adjustedDelay,
+        staggerChildren,
+        delayChildren,
       },
     },
   };
@@ -91,7 +102,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={adjustedViewport}
+      viewport={{ once, margin: "-50px" }}
       variants={containerVariants}
       className={className}
       {...props}
@@ -114,14 +125,20 @@ export function StaggerItem({
   ...props
 }) {
   const isMobile = useIsMobile();
-  const adjustedDistance = isMobile ? Math.min(distance, 10) : distance;
-  const adjustedDuration = isMobile ? Math.min(duration, 0.4) : duration;
+
+  if (isMobile) {
+    return (
+      <div className={className} {...props}>
+        {children}
+      </div>
+    );
+  }
 
   const directions = {
-    up: { y: adjustedDistance },
-    down: { y: -adjustedDistance },
-    left: { x: adjustedDistance },
-    right: { x: -adjustedDistance },
+    up: { y: distance },
+    down: { y: -distance },
+    left: { x: distance },
+    right: { x: -distance },
     none: {},
   };
 
@@ -135,8 +152,8 @@ export function StaggerItem({
       x: 0,
       y: 0,
       transition: {
-        duration: adjustedDuration,
-        ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01],
+        duration,
+        ease: [0.21, 1.02, 0.43, 1.01],
       },
     },
   };
@@ -167,20 +184,24 @@ export function ScaleIn({
   ...props
 }) {
   const isMobile = useIsMobile();
-  const adjustedScale = isMobile ? 0.98 : initialScale;
-  const adjustedDuration = isMobile ? Math.min(duration, 0.4) : duration;
-  const adjustedDelay = isMobile ? delay * 0.3 : delay;
-  const adjustedViewport = isMobile ? { once, margin: "-20px" } : { once, margin: "-80px" };
+
+  if (isMobile) {
+    return (
+      <div className={className} {...props}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: adjustedScale }}
+      initial={{ opacity: 0, scale: initialScale }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={adjustedViewport}
+      viewport={{ once, margin: "-80px" }}
       transition={{
-        duration: adjustedDuration,
-        delay: adjustedDelay,
-        ease: isMobile ? "easeOut" : [0.21, 1.02, 0.43, 1.01],
+        duration,
+        delay,
+        ease: [0.21, 1.02, 0.43, 1.01],
       }}
       style={{ willChange: "transform, opacity, scale", ...props.style }}
       className={className}
@@ -203,12 +224,19 @@ export function HoverLift({
   ...props
 }) {
   const isMobile = useIsMobile();
-  const adjustedLift = isMobile ? 0 : liftAmount;
+
+  if (isMobile) {
+    return (
+      <div className={className} {...props}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
-      whileHover={isMobile ? {} : {
-        y: adjustedLift,
+      whileHover={{
+        y: liftAmount,
         transition: { duration, ease: [0.25, 1, 0.5, 1] },
       }}
       className={className}
@@ -234,17 +262,9 @@ export function AnimatedText({
 
   if (isMobile) {
     return (
-      <motion.span
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once }}
-        transition={{ duration: 0.5, delay }}
-        style={{ display: "inline-block", willChange: "opacity" }}
-        className={className}
-        {...props}
-      >
+      <span className={className} {...props}>
         {text}
-      </motion.span>
+      </span>
     );
   }
 
@@ -297,3 +317,4 @@ export function AnimatedText({
     </motion.span>
   );
 }
+
