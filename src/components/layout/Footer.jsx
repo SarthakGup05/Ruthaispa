@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 import { InstagramIcon } from '../icons/lucide-instagram';
 import { Whatsapp } from '../icons/whatsapp';
 import Logo from '../ui/Logo';
+import { FadeIn } from '../ui/motion';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,7 +16,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-50" />
       <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-8 relative z-10">
+      <FadeIn direction="up" className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-8 relative z-10">
         
         {/* Brand & Contact Section */}
         <div className="md:col-span-12 lg:col-span-4 flex flex-col pr-0 lg:pr-8">
@@ -124,7 +125,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </FadeIn>
 
       {/* Copyright Bar */}
       <div className="max-w-7xl mx-auto px-6">

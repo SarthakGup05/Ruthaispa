@@ -8,6 +8,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import { motion } from "framer-motion";
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +42,12 @@ export default function Navbar({ darkMode, setDarkMode }) {
   ];
 
   return (
-    <header className={`${headerBaseClass} ${headerScrollClass}`}>
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.21, 1.02, 0.43, 1.01] }}
+      className={`${headerBaseClass} ${headerScrollClass}`}
+    >
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
         
         {/* --- BRAND / LOGO SECTION --- */}
@@ -192,6 +198,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
           </Sheet>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
