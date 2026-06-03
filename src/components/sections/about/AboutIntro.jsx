@@ -92,8 +92,10 @@ export default function AboutIntro() {
           {/* Right Column: Single Visual Panel */}
           <FadeIn direction="left" className="lg:col-span-5 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
             <img
-              src="/about_siamese_wellness.png"
+              src="/about_siamese_wellness.webp"
               alt="Traditional Thai Siamese Wellness Settings and Luk Prakob"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Elegant gradient overlay */}

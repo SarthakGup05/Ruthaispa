@@ -41,7 +41,7 @@ export default function ContactUs() {
           >
             {/* Background Zooming Spa Image */}
             <img
-              src="/receptionist_rua.png"
+              src="/receptionist_rua.webp"
               alt="RUA Thai Spa Guest Relations Receptionist"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />

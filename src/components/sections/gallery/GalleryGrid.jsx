@@ -12,12 +12,12 @@ export default function GalleryGrid() {
   ];
 
   const galleryItems = [
-    { id: 1, category: 'rooms', title: 'Traditional Siam Suite', desc: 'Mat-aligned floor therapies with custom teak dividers', image: '/siam_suite.png' },
-    { id: 2, category: 'lounges', title: 'Orchid Rest Pavilion', desc: 'Post-treatment infusion lounges with ambient water flows', image: '/orchid_pavilion.png' },
-    { id: 3, category: 'gardens', title: 'Lotus Pond Pathways', desc: 'Verdant tropical paths designed for meditative strolls', image: '/lotus_pond.png' },
-    { id: 4, category: 'rooms', title: 'VIP Herbal Steam Chamber', desc: 'Private local herb-infused steam chambers', image: '/steam_chamber.png' },
-    { id: 5, category: 'lounges', title: 'Siam Tea Lounge', desc: 'Organic herbal tea service under soft gold lighting', image: '/tea_lounge.png' },
-    { id: 6, category: 'gardens', title: 'Zen Meditation Alcove', desc: 'Quiet outdoor platforms shaded by organic bamboo', image: '/zen_alcove.png' }
+    { id: 1, category: 'rooms', title: 'Traditional Siam Suite', desc: 'Mat-aligned floor therapies with custom teak dividers', image: '/siam_suite.webp' },
+    { id: 2, category: 'lounges', title: 'Orchid Rest Pavilion', desc: 'Post-treatment infusion lounges with ambient water flows', image: '/orchid_pavilion.webp' },
+    { id: 3, category: 'gardens', title: 'Lotus Pond Pathways', desc: 'Verdant tropical paths designed for meditative strolls', image: '/lotus_pond.webp' },
+    { id: 4, category: 'rooms', title: 'VIP Herbal Steam Chamber', desc: 'Private local herb-infused steam chambers', image: '/steam_chamber.webp' },
+    { id: 5, category: 'lounges', title: 'Siam Tea Lounge', desc: 'Organic herbal tea service under soft gold lighting', image: '/tea_lounge.webp' },
+    { id: 6, category: 'gardens', title: 'Zen Meditation Alcove', desc: 'Quiet outdoor platforms shaded by organic bamboo', image: '/zen_alcove.webp' }
   ];
 
   const filteredItems = activeTab === 'all' 
