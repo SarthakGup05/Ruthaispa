@@ -2,6 +2,8 @@ import React from "react";
 import { Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
 import { Whatsapp } from "../../icons/whatsapp";
 import PetalDivider from "../../ui/PetalDivider";
+import MandalaWatermark from "../../graphics/MandalaWatermark";
+import IncenseSmoke from "../../graphics/IncenseSmoke";
 
 export default function ContactUs() {
   return (
@@ -11,6 +13,12 @@ export default function ContactUs() {
     >
       {/* Soft atmospheric background glow */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[45%] h-[50%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
+
+      {/* MandalaWatermark — centered subtle background ornament */}
+      <MandalaWatermark className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 -z-10 opacity-25 dark:opacity-40 hidden md:block" size={450} />
+
+      {/* IncenseSmoke — left edge organic accent */}
+      <IncenseSmoke className="absolute top-12 left-6 -z-10 opacity-30 hidden xl:block" height={280} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}

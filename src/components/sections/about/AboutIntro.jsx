@@ -1,6 +1,8 @@
 import React from "react";
 import { ShieldCheck, Award } from "lucide-react";
 import PetalDivider from "../../ui/PetalDivider";
+import FloatingLotus from "../../graphics/FloatingLotus";
+import IncenseSmoke from "../../graphics/IncenseSmoke";
 
 export default function AboutIntro() {
   return (
@@ -10,6 +12,15 @@ export default function AboutIntro() {
     >
       {/* Soft atmospheric background glow */}
       <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[55%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
+
+      {/* FloatingLotus — top-right decorative accent */}
+      <FloatingLotus className="absolute -top-6 right-8 -z-10 opacity-50 hidden lg:block" size={140} />
+
+      {/* FloatingLotus — bottom-left mirrored */}
+      <FloatingLotus className="absolute bottom-10 -left-4 -z-10 opacity-30 rotate-12 hidden lg:block" size={100} />
+
+      {/* IncenseSmoke — right edge organic accent */}
+      <IncenseSmoke className="absolute top-16 right-4 -z-10 opacity-40 hidden xl:block" height={350} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

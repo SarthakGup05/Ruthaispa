@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ArrowRight, Clock } from "lucide-react";
 import PetalDivider from "../../ui/PetalDivider";
+import ZenCircles from "../../graphics/ZenCircles";
+import FloatingLotus from "../../graphics/FloatingLotus";
 
 export default function ServiceList({ selectedService, setSelectedService }) {
   // Data strictly extracted from the provided menu
@@ -74,8 +76,13 @@ export default function ServiceList({ selectedService, setSelectedService }) {
   return (
     <section
       id="services"
-      className="py-16 md:py-24 px-6 max-w-7xl mx-auto w-full transition-colors duration-300"
+      className="relative py-16 md:py-24 px-6 max-w-7xl mx-auto w-full transition-colors duration-300 overflow-visible"
     >
+      {/* ZenCircles — top-left background accent */}
+      <ZenCircles className="absolute -top-16 -left-24 -z-10 opacity-40 hidden md:block" size={260} />
+
+      {/* FloatingLotus — bottom-right accent */}
+      <FloatingLotus className="absolute bottom-0 right-0 -z-10 opacity-30 hidden lg:block" size={110} />
       {/* Header Section */}
       <div className="text-center mb-16">
         <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">

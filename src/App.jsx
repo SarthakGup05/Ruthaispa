@@ -9,6 +9,7 @@ import AboutIntro from './components/sections/about/AboutIntro';
 import ServiceList from './components/sections/services/ServiceList';
 import BookingPlanner from './components/sections/services/BookingPlanner';
 import ContactUs from './components/sections/contact/ContactUs';
+import SenLines from './components/graphics/SenLines';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -42,8 +43,14 @@ function App() {
         {/* 1. Hero Welcome Section */}
         <Hero />
 
+        {/* Sen Line Divider */}
+        <SenLines />
+
         {/* 2. Why Choose Us Section */}
         <Philosophy />
+
+        {/* Sen Line Divider */}
+        <SenLines className="rotate-180" />
 
         {/* 4. Signature Treatments Showcase */}
         <ServiceList selectedService={selectedService} setSelectedService={setSelectedService} />
@@ -51,10 +58,14 @@ function App() {
         {/* 3. About Us Section */}
         <AboutIntro />
 
-
+        {/* Sen Line Divider */}
+        <SenLines />
 
         {/* 5. Interactive Booking Planner */}
         <BookingPlanner selectedService={selectedService} setSelectedService={setSelectedService} />
+
+        {/* Sen Line Divider */}
+        <SenLines className="rotate-180" />
 
         {/* 6. Unified Contact & Booking Section */}
         <ContactUs />

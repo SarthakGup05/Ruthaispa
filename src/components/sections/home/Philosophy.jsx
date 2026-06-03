@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Compass, Flower, Leaf } from 'lucide-react';
 import PetalDivider from '../../ui/PetalDivider';
+import MandalaWatermark from '../../graphics/MandalaWatermark';
+import ZenCircles from '../../graphics/ZenCircles';
 
 // Custom hook to handle scroll animations
 const useElementOnScreen = (options) => {
@@ -59,7 +61,13 @@ export default function Philosophy() {
       <div className="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] bg-[#b25338]/10 dark:bg-[#b25338]/15 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
       
       {/* Abstract Pattern Overlay (Subtle Texture) */}
-      <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none -z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5Qzk5OTkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMCAwaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMEoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=')]"></div>
+      <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none -z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5Qzk5OTkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMCAwaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMEoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=')]" />
+
+      {/* Mandala Watermark — large centered background ornament */}
+      <MandalaWatermark className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-40 dark:opacity-60" size={600} />
+
+      {/* Zen Circles — top-right corner accent */}
+      <ZenCircles className="absolute -top-20 -right-20 -z-10 opacity-50 hidden md:block" size={320} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">

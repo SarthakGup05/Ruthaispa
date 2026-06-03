@@ -100,10 +100,10 @@ export default function VideoSlider({ slides = SLIDES }) {
               <Button
                 asChild
                 size="lg"
-                className="bg-[#E6D2A7] text-[#0b5a60] hover:bg-[#E6D2A7]/90 uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/20"
+                className="group bg-[#E6D2A7] text-[#0b5a60] hover:bg-[#E6D2A7]/95 hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(230,210,167,0.35)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
               >
                 <a href="tel:+917449962261">
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
                   Call Now
                 </a>
               </Button>
@@ -111,14 +111,14 @@ export default function VideoSlider({ slides = SLIDES }) {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white bg-black/20 hover:bg-white hover:text-black uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/20"
+                className="group border-white/30 text-white bg-black/25 hover:bg-white hover:text-[#0b5a60] hover:border-white hover:scale-105 active:scale-[0.98] hover:shadow-[0_10px_25px_rgba(255,255,255,0.15)] uppercase font-bold tracking-widest text-xs rounded-full px-6 py-5 cursor-pointer shadow-lg shadow-black/25 transition-all duration-300 ease-out"
               >
                 <a
                   href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session."
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Whatsapp size={20} className="w-5 h-5 mr-2" />
+                  <Whatsapp size={20} className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                   WhatsApp
                 </a>
               </Button>
