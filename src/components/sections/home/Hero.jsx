@@ -79,7 +79,7 @@ export default function VideoSlider({ slides = SLIDES }) {
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden bg-background flex items-center justify-center group"
+      className="relative w-full h-screen overflow-hidden bg-transparent flex items-center justify-center group"
       aria-label="Video Showcase"
     >
       {/* Video Layers / Static Background */}

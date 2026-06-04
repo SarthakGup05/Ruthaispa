@@ -27,7 +27,7 @@ export default function Philosophy() {
   return (
     <section 
       id="why-choose-us" 
-      className="relative py-12 md:py-16 px-6 overflow-hidden bg-background transition-colors duration-500 z-0"
+      className="relative py-6 md:py-8 px-6 overflow-hidden bg-transparent transition-colors duration-500 z-0"
     >
       {/* --- PREMIUM BACKGROUND EFFECTS --- */}
       {/* Dynamic Gradients */}
@@ -44,7 +44,7 @@ export default function Philosophy() {
       <ZenCircles className="absolute -top-20 -right-20 -z-10 opacity-50 hidden md:block" size={320} />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* --- LEFT SIDE: HIGH-END PICTURE CONTAINER --- */}
           <FadeIn 
@@ -57,15 +57,18 @@ export default function Philosophy() {
             {/* Floating Leaf Icon 1 */}
             <Leaf className="absolute -top-8 -right-8 w-12 h-12 text-primary/20 animate-float opacity-70" style={{ animationDelay: '1s' }} strokeWidth={1} />
             
-            {/* Main Image Mask/Container */}
-            <div className="relative overflow-hidden rounded-t-full rounded-b-3xl aspect-[3/4] shadow-2xl shadow-primary/10 border-4 border-card/50 backdrop-blur-sm group-hover:border-primary/30 transition-colors duration-500">
-              {/* The Image */}
-              <img 
-                src="/siam_suite.webp" 
-                alt="Serene spa environment" 
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
+            {/* Main Video/Image Mask/Container */}
+            <div className="relative overflow-hidden rounded-t-full rounded-b-3xl aspect-[3/4] shadow-2xl shadow-primary/10 border-4 border-card/50 backdrop-blur-sm group-hover:border-primary/30 transition-colors duration-500 bg-black">
+              {/* Autoplaying, muted loop video showing professional therapy */}
+              <video
+                src="/hot_sensual_video_o.mp4"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/siam_suite.webp"
               />
               
               {/* Overlay Gradient on Image */}
@@ -88,19 +91,19 @@ export default function Philosophy() {
               <span className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-primary font-semibold mb-4 block">
                 Why RUA Thai Spa
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-foreground mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-foreground mb-4 leading-tight">
                 An Oasis of <br className="hidden lg:block"/>Ancient Wisdom
               </h2>
-              <div className="w-40 md:w-full md:flex md:justify-start mb-8">
+              <div className="w-40 md:w-full md:flex md:justify-start mb-2">
                 <PetalDivider />
               </div>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-2 font-light leading-relaxed mb-6">
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-1 font-light leading-relaxed mb-3">
                 We preserve and honour ancient Thai healing arts, providing an immersive, calming sensory environment to align and restore your inner vitality.
               </p>
             </FadeIn>
 
             {/* Vertically Stacked Cards */}
-            <StaggerContainer className="space-y-6 w-full max-w-3xl" staggerChildren={0.2} delayChildren={0.4}>
+            <StaggerContainer className="space-y-4 w-full max-w-3xl" staggerChildren={0.2} delayChildren={0.4}>
               {philosophyPoints.map((point, index) => {
                 const Icon = point.icon;
                 return (
@@ -113,7 +116,7 @@ export default function Philosophy() {
                       <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
                       
                       {/* Inner Card */}
-                      <div className="relative bg-card/85 dark:bg-card/40 backdrop-blur-lg border border-border/25 rounded-[22px] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 transition-all duration-300 group-hover:bg-card/95 dark:group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
+                      <div className="relative bg-card/85 dark:bg-card/40 backdrop-blur-lg border border-border/25 rounded-[22px] p-4 md:p-5 flex flex-col sm:flex-row items-center sm:items-start gap-4 transition-all duration-300 group-hover:bg-card/95 dark:group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
                         
                         {/* Icon Container */}
                         <div className="flex-shrink-0 relative">
@@ -125,7 +128,7 @@ export default function Philosophy() {
 
                         {/* Text Content */}
                         <div className="flex-grow text-center sm:text-left">
-                          <h3 className="text-xl font-serif text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                          <h3 className="text-xl font-serif text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
                             {point.title}
                           </h3>
                           <p className="text-muted-foreground text-sm leading-relaxed font-light">
