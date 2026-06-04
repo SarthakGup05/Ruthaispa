@@ -64,15 +64,34 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
           onClick={() => setCurrentPage?.("home")}
           aria-label="RUA Thai Spa Home"
         >
-          <Logo
-            className={`w-auto object-contain transition-all duration-500 ease-out group-hover:scale-105 filter ${
-              !isScrolled && "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
-            } ${
-              isScrolled 
-                ? "h-[50px] md:h-[58px]" // Scrolled height (compact)
-                : "h-[64px] md:h-[80px]" // Top of page height (prominent but contained)
-            }`}
-          />
+          <div className="flex items-center gap-3 md:gap-4 select-none">
+            <Logo
+              showText={false}
+              className={`w-auto object-contain transition-all duration-500 ease-out group-hover:scale-105 filter ${
+                !isScrolled && "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+              } ${
+                isScrolled 
+                  ? "h-11 md:h-14" // Scrolled height (compact)
+                  : "h-14 md:h-18" // Top of page height (prominent but contained)
+              }`}
+            />
+            <div className="flex flex-col text-left font-serif leading-none mt-0.5">
+              <span className={`font-serif tracking-[0.15em] font-medium uppercase transition-all duration-500 ${
+                isScrolled 
+                  ? "text-lg md:text-xl text-foreground" 
+                  : "text-xl md:text-2xl text-white"
+              }`}>
+                RUA
+              </span>
+              <span className={`font-sans tracking-[0.3em] font-semibold uppercase transition-all duration-500 mt-1 ${
+                isScrolled 
+                  ? "text-[9px] md:text-[10px] text-primary" 
+                  : "text-[10px] md:text-[11px] text-[#E6D2A7]"
+              }`}>
+                Thai Spa
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* --- DESKTOP NAVIGATION --- */}
@@ -188,9 +207,20 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
                   setCurrentPage?.("home");
                 }}
               >
-                <Logo
-                  className="h-20 sm:h-24 w-auto object-contain filter drop-shadow-md"
-                />
+                <div className="flex items-center gap-3 sm:gap-4 select-none">
+                  <Logo
+                    showText={false}
+                    className="h-16 sm:h-20 w-auto object-contain filter drop-shadow-md"
+                  />
+                  <div className="flex flex-col text-left font-serif leading-none mt-0.5">
+                    <span className="font-serif tracking-[0.15em] font-medium uppercase text-xl sm:text-2xl text-foreground">
+                      RUA
+                    </span>
+                    <span className="font-sans tracking-[0.3em] font-semibold uppercase text-[9px] sm:text-[10px] text-primary mt-1">
+                      Thai Spa
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Mobile Menu Links */}

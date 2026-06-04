@@ -31,9 +31,20 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
             className="inline-block mb-2 group"
             aria-label="RUA Thai Spa Home"
           >
-            <Logo
-              className="h-24 md:h-28 w-auto transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(230,210,167,0.1)]"
-            />
+            <div className="flex items-center gap-3.5 select-none">
+              <Logo
+                showText={false}
+                className="h-16 md:h-20 w-auto transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(230,210,167,0.1)]"
+              />
+              <div className="flex flex-col text-left font-serif leading-none mt-0.5">
+                <span className="font-serif tracking-[0.15em] font-medium uppercase text-2xl md:text-3xl text-foreground">
+                  RUA
+                </span>
+                <span className="font-sans tracking-[0.3em] font-semibold uppercase text-[10px] md:text-[11px] text-primary mt-1.5">
+                  Thai Spa
+                </span>
+              </div>
+            </div>
           </a>
           
           <address className="flex flex-col gap-2 not-italic">

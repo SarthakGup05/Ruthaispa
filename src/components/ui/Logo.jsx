@@ -1,6 +1,41 @@
 import React from "react";
 
-export default function Logo({ className, ...props }) {
+export default function Logo({ className, showText = true, ...props }) {
+  if (!showText) {
+    return (
+      <svg
+        viewBox="55 22 90 55"
+        className={className}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <defs>
+          <linearGradient id="logoGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#f3e7c4" />
+            <stop offset="50%" stopColor="#d4af37" />
+            <stop offset="100%" stopColor="#aa7c11" />
+          </linearGradient>
+        </defs>
+        <g stroke="url(#logoGoldGradient)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none">
+          {/* Central Petal */}
+          <path 
+            d="M100 25 C92 40 92 65 100 72 C108 65 108 40 100 25 Z" 
+            fill="url(#logoGoldGradient)" 
+            fillOpacity="0.05" 
+            strokeWidth="2.5"
+          />
+          <path d="M89 33 C77 42 79 63 100 72" />
+          <path d="M111 33 C123 42 121 63 100 72" />
+          <path d="M80 42 C66 52 70 68 100 72" />
+          <path d="M120 42 C134 52 130 68 100 72" />
+          <path d="M74 54 C58 60 63 71 96 72" />
+          <path d="M126 54 C142 60 137 71 104 72" />
+        </g>
+      </svg>
+    );
+  }
+
   return (
     <svg
       viewBox="0 0 200 200"
