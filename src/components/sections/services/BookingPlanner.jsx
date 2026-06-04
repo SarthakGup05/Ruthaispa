@@ -155,7 +155,7 @@ Please check availability for me!`;
                     className={`p-4 rounded-2xl text-left border text-sm transition-all duration-300 flex items-center justify-between cursor-pointer hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 ${
                       selectedService === s.id
                         ? "border-primary bg-primary/10 text-foreground font-semibold shadow-lg shadow-primary/5"
-                        : "border-border/15 bg-card/25 hover:bg-card/50 text-muted-foreground hover:text-foreground"
+                        : "border-border/30 dark:border-border/15 bg-secondary/35 dark:bg-card/25 hover:bg-secondary/55 dark:hover:bg-card/50 text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     <span className="font-medium tracking-wide">{s.name}</span>
@@ -181,7 +181,7 @@ Please check availability for me!`;
                     className={`flex-1 min-w-[90px] py-3.5 px-6 rounded-2xl border text-sm font-semibold tracking-wider transition-all duration-300 cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${
                       duration === time
                         ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                        : "border-border/15 bg-card/25 hover:bg-card/50 text-muted-foreground hover:text-foreground"
+                        : "border-border/30 dark:border-border/15 bg-secondary/35 dark:bg-card/25 hover:bg-secondary/55 dark:hover:bg-card/50 text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {time} Mins
@@ -204,7 +204,7 @@ Please check availability for me!`;
                     className={`flex-1 py-3 px-4 rounded-xl border text-xs uppercase tracking-wider font-semibold transition-all duration-300 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm ${
                       pressure === lvl
                         ? "border-primary bg-primary/10 text-foreground font-semibold shadow-md shadow-primary/5"
-                        : "border-border/15 bg-card/25 hover:bg-card/50 text-muted-foreground"
+                        : "border-border/30 dark:border-border/15 bg-secondary/35 dark:bg-card/25 hover:bg-secondary/55 dark:hover:bg-card/50 text-muted-foreground"
                     }`}
                   >
                     {lvl}
@@ -232,7 +232,7 @@ Please check availability for me!`;
                     className={`py-3.5 px-4 rounded-xl border text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer hover:-translate-y-0.5 hover:shadow-sm ${
                       focusArea === area.id
                         ? "border-primary bg-primary/10 text-foreground font-semibold shadow-md shadow-primary/5"
-                        : "border-border/15 bg-card/25 hover:bg-card/50 text-muted-foreground hover:text-foreground"
+                        : "border-border/30 dark:border-border/15 bg-secondary/35 dark:bg-card/25 hover:bg-secondary/55 dark:hover:bg-card/50 text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {area.name}
@@ -280,7 +280,7 @@ Please check availability for me!`;
                   <span>Session Summary</span>
                 </h3>
 
-                <div className="flex flex-col gap-4 text-[13px] border border-border/20 p-5 rounded-2xl bg-card/40 shadow-inner">
+                <div className="flex flex-col gap-4 text-[13px] border border-border/25 dark:border-border/20 p-5 rounded-2xl bg-card/85 dark:bg-card/40 shadow-inner">
                   <div className="flex justify-between items-start pb-3 border-b border-border/10">
                     <span className="text-muted-foreground font-medium">
                       Selected Therapy:
@@ -341,7 +341,7 @@ Please check availability for me!`;
 
                 <a
                   href="tel:+917449962261"
-                  className="w-full py-4 bg-card/75 text-foreground border border-border/20 hover:border-primary/45 font-bold uppercase tracking-widest text-xs rounded-full hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-sm"
+                  className="w-full py-4 bg-card/90 dark:bg-card/75 text-foreground border border-border/20 hover:border-primary/45 font-bold uppercase tracking-widest text-xs rounded-full hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-sm"
                 >
                   <Phone className="w-5 h-5 shrink-0 text-primary" />
                   <span>Call to Reserve</span>

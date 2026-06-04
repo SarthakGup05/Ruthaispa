@@ -47,8 +47,8 @@ export default function FAQAccordion() {
             return (
               <div 
                 key={idx} 
-                className={`border rounded-2xl bg-card/45 transition-all duration-300 ${
-                  isOpen ? 'border-primary bg-gradient-to-r from-card to-primary/5 shadow-md shadow-primary/5' : 'border-border/15 hover:border-primary/20'
+                className={`border rounded-2xl bg-card/75 dark:bg-card/45 transition-all duration-300 ${
+                  isOpen ? 'border-primary bg-gradient-to-r from-card to-primary/5 shadow-md shadow-primary/5' : 'border-border/30 dark:border-border/15 hover:border-primary/35'
                 }`}
               >
                 <button
