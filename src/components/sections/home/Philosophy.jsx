@@ -113,7 +113,7 @@ export default function Philosophy() {
                       <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
                       
                       {/* Inner Card */}
-                      <div className="relative bg-card/40 backdrop-blur-lg border border-white/5 rounded-[22px] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 transition-all duration-300 group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
+                      <div className="relative bg-card/85 dark:bg-card/40 backdrop-blur-lg border border-border/25 rounded-[22px] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 transition-all duration-300 group-hover:bg-card/95 dark:group-hover:bg-card/60 group-hover:shadow-xl group-hover:shadow-primary/5">
                         
                         {/* Icon Container */}
                         <div className="flex-shrink-0 relative">

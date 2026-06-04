@@ -72,7 +72,7 @@ export default function Benefits() {
               {/* Animated Gradient Border */}
               <div className="absolute inset-0 bg-gradient-to-b from-border/20 to-transparent group-hover:from-primary/40 group-hover:to-transparent transition-colors duration-500 rounded-3xl" />
               
-              <div className="relative h-full bg-card/20 backdrop-blur-md border border-white/5 rounded-[22px] p-8 md:p-10 text-left flex flex-col items-start overflow-hidden">
+              <div className="relative h-full bg-card/75 dark:bg-card/20 backdrop-blur-md border border-border/25 rounded-[22px] p-8 md:p-10 text-left flex flex-col items-start overflow-hidden">
                 {/* Internal Hover Glow */}
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 

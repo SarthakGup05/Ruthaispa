@@ -85,7 +85,7 @@
     --accent: oklch(0.85 0.07 85); /* Champagne Gold */
     --accent-foreground: oklch(0.25 0.05 195);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.38 0.08 195 / 15%);
+    --border: oklch(0.38 0.08 195 / 22%);
     --input: oklch(0.38 0.08 195 / 20%);
     --ring: oklch(0.38 0.08 195);
     --chart-1: oklch(0.85 0.07 85);

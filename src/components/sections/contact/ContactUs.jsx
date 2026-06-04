@@ -49,7 +49,7 @@ export default function ContactUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-10" />
 
             {/* Tiny visual badge inside image */}
-            <div className="absolute bottom-6 left-6 bg-card/60 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-2xl z-20 flex items-center gap-2">
+            <div className="absolute bottom-6 left-6 bg-card/85 dark:bg-card/60 backdrop-blur-md border border-border/25 px-4 py-2.5 rounded-2xl z-20 flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
               <span className="text-[10px] uppercase tracking-wider font-semibold text-foreground">
                 Sanctuary Reception
@@ -125,7 +125,7 @@ export default function ContactUs() {
 
               <a
                 href="tel:+917449962261"
-                className="w-full sm:w-1/2 py-4 px-6 bg-card/45 text-foreground border border-border/20 hover:border-primary/30 font-semibold uppercase tracking-widest text-xs rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer text-center"
+                className="w-full sm:w-1/2 py-4 px-6 bg-card/80 dark:bg-card/45 text-foreground border border-border/20 hover:border-primary/30 font-semibold uppercase tracking-widest text-xs rounded-full flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer text-center"
               >
                 <Phone className="w-5 h-5 shrink-0 text-primary" />
                 <span>Call +91 74499 62261</span>

@@ -62,7 +62,7 @@ export default function AboutIntro() {
 
             {/* Badges / Stats grid */}
             <StaggerContainer className="grid grid-cols-3 gap-4 pt-6 border-t border-border/10 mt-2" staggerChildren={0.15} delayChildren={0.3}>
-              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   18+
                 </span>
@@ -70,7 +70,7 @@ export default function AboutIntro() {
                   Yrs Pedigree
                 </span>
               </StaggerItem>
-              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   100%
                 </span>
@@ -78,7 +78,7 @@ export default function AboutIntro() {
                   Female Certified
                 </span>
               </StaggerItem>
-              <StaggerItem direction="up" className="p-4 bg-card/30 border border-border/10 rounded-2xl backdrop-blur-sm">
+              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   Organic
                 </span>
