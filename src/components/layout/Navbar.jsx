@@ -69,8 +69,8 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
               !isScrolled && "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
             } ${
               isScrolled 
-                ? "h-10 md:h-12" // Scrolled height (compact)
-                : "h-12 md:h-16" // Top of page height (prominent but contained)
+                ? "h-[50px] md:h-[58px]" // Scrolled height (compact)
+                : "h-[64px] md:h-[80px]" // Top of page height (prominent but contained)
             }`}
           />
         </div>

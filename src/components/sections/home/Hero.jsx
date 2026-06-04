@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Whatsapp } from "../../icons/whatsapp";
-import { useIsMobile } from "../../../hooks/use-mobile";
 
 // Example Data Structure
 const SLIDES = [
@@ -15,7 +14,6 @@ const SLIDES = [
 ];
 
 export default function VideoSlider({ slides = SLIDES }) {
-  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const videoRefs = useRef([]);
 
@@ -95,36 +93,28 @@ export default function VideoSlider({ slides = SLIDES }) {
           {/* Black overlay for text readability */}
           <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
 
-          {isMobile ? (
-            <img
-              src="/spa_interior.webp"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          ) : (
-            <video
-              ref={(el) => {
-                videoRefs.current[index] = el;
-                if (el) {
-                  el.defaultMuted = true;
-                  el.muted = true;
-                }
-              }}
-              className="absolute inset-0 w-full h-full object-cover"
-              playsInline
-              muted
-              defaultMuted
-              loop
-              autoPlay
-              preload="metadata"
-              poster="/spa_interior.webp"
-            >
-              {/* Prioritize WebM format for modern browsers */}
-              <source src={slide.videoSrc} type="video/webm" />
-              <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+          <video
+            ref={(el) => {
+              videoRefs.current[index] = el;
+              if (el) {
+                el.defaultMuted = true;
+                el.muted = true;
+              }
+            }}
+            className="absolute inset-0 w-full h-full object-cover"
+            playsInline
+            muted
+            defaultMuted
+            loop
+            autoPlay
+            preload="metadata"
+            poster="/spa_interior.webp"
+          >
+            {/* Prioritize WebM format for modern browsers */}
+            <source src={slide.videoSrc} type="video/webm" />
+            <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
           {/* Text Content & Action Buttons */}
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">

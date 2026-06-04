@@ -4,7 +4,6 @@ import PetalDivider from '../../ui/PetalDivider';
 import MandalaWatermark from '../../graphics/MandalaWatermark';
 import ZenCircles from '../../graphics/ZenCircles';
 import { FadeIn, StaggerContainer, StaggerItem } from '../../ui/motion';
-import { useIsMobile } from '../../../hooks/use-mobile';
 
 const philosophyPoints = [
   {
@@ -25,7 +24,6 @@ const philosophyPoints = [
 ];
 
 export default function Philosophy() {
-  const isMobile = useIsMobile();
   return (
     <section 
       id="why-choose-us" 
@@ -61,25 +59,17 @@ export default function Philosophy() {
             
             {/* Main Video/Image Mask/Container */}
             <div className="relative overflow-hidden rounded-t-full rounded-b-3xl aspect-[3/4] shadow-2xl shadow-primary/10 border-4 border-card/50 backdrop-blur-sm group-hover:border-primary/30 transition-colors duration-500 bg-black">
-              {/* Serve static image on mobile, autoplaying video on desktop */}
-              {isMobile ? (
-                <img
-                  src="/siam_suite.webp"
-                  alt="Traditional Siam Suite"
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
-                />
-              ) : (
-                <video
-                  src="/hot_sensual_video_o.mp4"
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster="/siam_suite.webp"
-                />
-              )}
+              {/* Autoplaying, muted loop video showing professional therapy */}
+              <video
+                src="/hot_sensual_video_o.mp4"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/siam_suite.webp"
+              />
               
               {/* Overlay Gradient on Image */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
