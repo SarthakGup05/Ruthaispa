@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Phone } from "lucide-react";
+import { Phone, ChevronUp } from "lucide-react";
 import { InstagramIcon } from "../icons/lucide-instagram";
 import { Whatsapp } from "../icons/whatsapp";
 
@@ -9,6 +9,20 @@ export default function FloatingActions({ loading }) {
   const instagramLink = "https://instagram.com/ruathaispa";
 
   const [showPopup, setShowPopup] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (loading === undefined) {
@@ -48,7 +62,7 @@ export default function FloatingActions({ loading }) {
     <>
       {/* ================= DESKTOP FLOATING BAR (RIGHT SIDE) ================= */}
       <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-4">
-        <div className="bg-background/80 dark:bg-background/40 border border-border/15 p-2.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-md flex flex-col gap-3 relative">
+        <div className="bg-background/95 dark:bg-background/40 border border-border/30 dark:border-border/15 p-2.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-md flex flex-col gap-3 relative">
           
           {/* Subtle Golden Glow behind the bar */}
           <div className="absolute inset-0 bg-primary/5 rounded-full blur-[8px] pointer-events-none -z-10" />
@@ -158,7 +172,7 @@ export default function FloatingActions({ loading }) {
 
       {/* ================= MOBILE FLOATING BOTTOM DOCK ================= */}
       <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-[340px] px-1 animate-slide-up">
-        <div className="bg-background/90 dark:bg-background/85 border border-border/25 p-2 rounded-full shadow-[0_15px_35px_rgba(0,0,0,0.18)] backdrop-blur-lg flex gap-2.5 relative items-center justify-between">
+        <div className="bg-background/98 dark:bg-background/85 border border-border/35 dark:border-border/25 p-2 rounded-full shadow-[0_15px_35px_rgba(0,0,0,0.18)] backdrop-blur-lg flex gap-2.5 relative items-center justify-between">
           
           {/* Subtle Golden Glow */}
           <div className="absolute inset-0 bg-primary/5 rounded-full blur-[8px] pointer-events-none -z-10" />
@@ -250,6 +264,25 @@ export default function FloatingActions({ loading }) {
           animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
       `}</style>
+
+      {/* Scroll to Top Utility Button */}
+      <button
+        onClick={scrollToTop}
+        id="scroll-to-top-button"
+        data-testid="scroll-to-top-button"
+        aria-label="Scroll to top"
+        className={`fixed right-6 bottom-24 md:bottom-6 z-40 w-11 h-11 rounded-full border border-border/30 dark:border-border/25 bg-background/95 dark:bg-background/40 hover:bg-primary/5 text-foreground hover:text-primary hover:border-primary/40 flex items-center justify-center transition-all duration-500 hover:scale-105 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md group cursor-pointer ${
+          showScrollTop
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 translate-y-4 scale-75 pointer-events-none"
+        }`}
+      >
+        <ChevronUp size={18} strokeWidth={2.2} />
+        {/* Desktop Tooltip */}
+        <span className="hidden md:inline absolute right-14 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-background/95 dark:bg-card/95 border border-border/25 text-[10px] uppercase tracking-[0.15em] font-semibold text-foreground opacity-0 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 translate-x-2 transition-all duration-300 shadow-md backdrop-blur-sm whitespace-nowrap">
+          Scroll to Top
+        </span>
+      </button>
     </>
   );
 }
