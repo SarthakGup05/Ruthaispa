@@ -9,14 +9,14 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-background pt-12 pb-6 text-sm transition-colors duration-300 border-t border-border/10">
+    <footer className="relative overflow-hidden bg-transparent pt-8 pb-4 text-sm transition-colors duration-300 border-t border-border/10">
       
       {/* Minimal Ambient Lighting */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 pointer-events-none -z-10" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-50" />
       <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      <FadeIn direction="up" className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-8 relative z-10">
+      <FadeIn direction="up" className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-6 relative z-10">
         
         {/* Brand & Contact Section */}
         <div className="md:col-span-12 lg:col-span-4 flex flex-col pr-0 lg:pr-8">
@@ -28,15 +28,15 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
               e.preventDefault();
               setCurrentPage?.("home");
             }}
-            className="inline-block mb-4 group"
+            className="inline-block mb-2 group"
             aria-label="RUA Thai Spa Home"
           >
             <Logo
-              className="h-32 md:h-36 w-auto transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(230,210,167,0.1)]"
+              className="h-24 md:h-28 w-auto transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(230,210,167,0.1)]"
             />
           </a>
           
-          <address className="flex flex-col gap-3.5 not-italic">
+          <address className="flex flex-col gap-2 not-italic">
             <a
               id="footer-contact-address"
               data-testid="footer-contact-address"
@@ -72,10 +72,10 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
 
         {/* Navigation - Explore */}
         <nav className="md:col-span-4 lg:col-span-2 pt-1 font-sans">
-          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4 font-semibold">
+          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-2.5 font-semibold">
             Explore
           </h4>
-          <ul className="flex flex-col gap-3 text-[13px] font-light text-muted-foreground">
+          <ul className="flex flex-col gap-2 text-[13px] font-light text-muted-foreground">
             {[
               { name: 'Home', page: 'home' },
               { name: 'About Us', page: 'about' },
@@ -103,10 +103,10 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
 
         {/* Navigation - Signature Treatments */}
         <nav className="md:col-span-4 lg:col-span-3 pt-1 font-sans">
-          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4 font-semibold">
+          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-2.5 font-semibold">
             Treatments
           </h4>
-          <ul className="flex flex-col gap-3 text-[13px] font-light text-muted-foreground">
+          <ul className="flex flex-col gap-2 text-[13px] font-light text-muted-foreground">
             {[
               { name: 'Swedish Massage', id: 'swedish' },
               { name: 'Deep Tissue Massage', id: 'deep-tissue' },
@@ -137,15 +137,15 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
 
         {/* Hours & Socials */}
         <div className="md:col-span-4 lg:col-span-3 pt-1">
-          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4">
+          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-2.5">
             Sanctuary Hours
           </h4>
-          <ul className="flex flex-col gap-3 text-[13px] font-light text-muted-foreground mb-6">
-            <li className="flex justify-between items-end border-b border-border/10 pb-3">
+          <ul className="flex flex-col gap-2 text-[13px] font-light text-muted-foreground mb-4">
+            <li className="flex justify-between items-end border-b border-border/10 pb-2">
               <span>Monday - Sunday</span>
               <span className="text-foreground tracking-wide">10:00 AM - 09:00 PM</span>
             </li>
-            <li className="flex justify-between items-end border-b border-border/10 pb-3">
+            <li className="flex justify-between items-end border-b border-border/10 pb-2">
               <span>Holidays</span>
               <span className="text-foreground tracking-wide">10:00 AM - 09:00 PM</span>
             </li>
@@ -183,7 +183,7 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
 
       {/* Copyright Bar */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="border-t border-border/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-medium">
+        <div className="border-t border-border/10 pt-4 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-medium">
           <p>© {currentYear} RUA Thai Spa Wellness. All rights reserved.</p>
           <p className="flex items-center gap-1 normal-case tracking-normal font-sans text-xs text-muted-foreground">
             Made with <Heart className="w-3 h-3 text-destructive fill-destructive animate-pulse mx-0.5" /> by{" "}

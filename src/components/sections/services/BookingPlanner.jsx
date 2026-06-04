@@ -93,7 +93,7 @@ Please check availability for me!`;
   return (
     <section
       id="pricing-planner"
-      className="relative py-24 px-6 bg-background/50 border-t border-border/10 transition-colors duration-500 z-0 overflow-hidden"
+      className="relative py-12 md:py-16 px-6 bg-background/50 border-t border-border/10 transition-colors duration-500 z-0 overflow-hidden"
     >
       {/* Base background layer (previous image) */}
       <div 
@@ -121,7 +121,7 @@ Please check availability for me!`;
       <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[50%] bg-primary/5 dark:bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <FadeIn direction="up" className="text-center mb-16 flex flex-col items-center">
+        <FadeIn direction="up" className="text-center mb-10 flex flex-col items-center">
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold">
             Interactive Booking
           </span>
@@ -135,15 +135,15 @@ Please check availability for me!`;
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-background/90 dark:bg-background/70 border border-border/20 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-background/90 dark:bg-background/70 border border-border/20 rounded-3xl p-5 md:p-8 backdrop-blur-xl shadow-2xl relative">
           {/* Left panel: Booking configuration options */}
-          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-8">
+          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-5">
             {/* Step 1: Select Massage */}
             <div>
               <label className="text-[10px] uppercase tracking-widest font-bold block text-primary mb-4">
                 1. Select Massage or Therapy
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[260px] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar">
                 {services.map((s) => (
                   <button
                     key={s.id}
@@ -264,7 +264,7 @@ Please check availability for me!`;
             {/* Soft gold border glow inside card */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 pointer-events-none -z-10" />
             
-            <div className="flex flex-col justify-between h-full gap-8 relative z-10">
+            <div className="flex flex-col justify-between h-full gap-5 relative z-10">
               <div>
                 {/* Elegant Luxury Spa Ornament */}
                 <div className="flex justify-center mb-6 opacity-80">

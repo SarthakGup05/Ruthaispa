@@ -25,10 +25,10 @@ export default function GalleryGrid() {
     : galleryItems.filter(item => item.category === activeTab);
 
   return (
-    <section id="gallery" className="py-24 px-6 bg-card/10 relative transition-colors duration-300">
+    <section id="gallery" className="py-12 md:py-16 px-6 bg-card/10 relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold">Visual Sanctuary</span>
           <h2 className="text-3xl md:text-5xl mt-2 font-normal">Our Space</h2>
           <PetalDivider />
@@ -38,7 +38,7 @@ export default function GalleryGrid() {
         </div>
 
         {/* Categories Tab Bar */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -55,11 +55,11 @@ export default function GalleryGrid() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {filteredItems.map((item) => (
             <div 
               key={item.id} 
-              className="group relative overflow-hidden rounded-3xl bg-card border border-border/15 aspect-[4/3] flex flex-col justify-end p-6 hover:border-primary/30 transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl bg-card border border-border/15 aspect-[4/3] flex flex-col justify-end p-4 md:p-5 hover:border-primary/30 transition-all duration-300"
             >
               
               {/* background image */}
@@ -76,7 +76,7 @@ export default function GalleryGrid() {
                 <span className="text-[9px] uppercase tracking-widest font-bold text-primary mb-1 block">
                   {categories.find(c => c.id === item.category)?.name}
                 </span>
-                <h3 className="text-lg font-serif font-semibold text-foreground mb-1">
+                <h3 className="text-lg font-serif font-semibold text-foreground mb-0.5">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground text-xs font-light leading-relaxed">

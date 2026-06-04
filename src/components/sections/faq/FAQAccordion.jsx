@@ -29,10 +29,10 @@ export default function FAQAccordion() {
   ];
 
   return (
-    <section id="faq" className="py-24 px-6 relative transition-colors duration-300">
+    <section id="faq" className="py-12 md:py-16 px-6 relative transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold">Spa Etiquette</span>
           <h2 className="text-3xl md:text-5xl mt-2 font-normal">Common Questions</h2>
           <PetalDivider />
@@ -41,7 +41,7 @@ export default function FAQAccordion() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (

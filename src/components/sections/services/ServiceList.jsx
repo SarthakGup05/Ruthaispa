@@ -77,7 +77,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
   return (
     <section
       id="services"
-      className="relative py-16 md:py-24 px-6 max-w-7xl mx-auto w-full transition-colors duration-300 overflow-visible"
+      className="relative py-12 md:py-16 px-6 max-w-7xl mx-auto w-full transition-colors duration-300 overflow-visible"
     >
       {/* ZenCircles — top-left background accent */}
       <ZenCircles className="absolute -top-16 -left-24 -z-10 opacity-40 hidden md:block" size={260} />
@@ -86,17 +86,17 @@ export default function ServiceList({ selectedService, setSelectedService }) {
       <FloatingLotus className="absolute bottom-0 right-0 -z-10 opacity-30 hidden lg:block" size={110} />
       
       {/* Header Section */}
-      <FadeIn direction="up" className="text-center mb-16">
+      <FadeIn direction="up" className="text-center mb-10">
         <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">
           Signature Rituals
         </span>
-        <h2 className="text-4xl md:text-6xl mt-3 font-normal tracking-tight font-serif text-foreground">
+        <h2 className="text-4xl md:text-6xl mt-2 font-normal tracking-tight font-serif text-foreground">
           Premium Spa Therapies
         </h2>
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center mt-2">
           <PetalDivider />
         </div>
-        <p className="text-muted-foreground text-base mt-4 max-w-xl mx-auto font-light leading-relaxed">
+        <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
           Experience our carefully curated selection of therapeutic massages,
           designed to disconnect you from stress and step into a world of
           wellness.
@@ -104,7 +104,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
       </FadeIn>
 
       {/* Services Grid */}
-      <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12" staggerChildren={0.2}>
+      <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8" staggerChildren={0.2}>
         {services.map((item) => (
           <StaggerItem key={item.id} direction="up" distance={40}>
             <HoverLift liftAmount={-6} className="h-full">
@@ -117,7 +117,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                     .getElementById("pricing-planner")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className={`group p-8 bg-card/85 dark:bg-card/50 backdrop-blur-sm border rounded-3xl text-left cursor-pointer transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
+                className={`group p-5 md:p-6 bg-card/85 dark:bg-card/50 backdrop-blur-sm border rounded-3xl text-left cursor-pointer transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
                   selectedService === item.id
                     ? "border-primary/60 bg-gradient-to-br from-card/90 to-primary/5 shadow-xl shadow-primary/10"
                     : "border-border/30 dark:border-border/15 hover:border-primary/40"
@@ -125,7 +125,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
               >
                 <div>
                   {/* Image Container */}
-                  <div className="relative overflow-hidden rounded-3xl aspect-[16/10] mb-6 border border-border/10 shadow-inner">
+                  <div className="relative overflow-hidden rounded-3xl aspect-[16/10] mb-4 border border-border/10 shadow-inner">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -137,15 +137,15 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-3xl font-serif font-medium leading-snug tracking-tight text-foreground mb-4">
+                  <h3 className="text-3xl font-serif font-medium leading-snug tracking-tight text-foreground mb-2">
                     {item.name}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed font-light mb-6 line-clamp-3">
+                  <p className="text-muted-foreground text-sm leading-relaxed font-light mb-4 line-clamp-3">
                     {item.desc}
                   </p>
 
                   {/* Benefits List */}
-                  <div className="flex flex-col gap-3.5 mb-8">
+                  <div className="flex flex-col gap-3.5 mb-5">
                     {item.benefits.map((b, idx) => (
                       <div
                         key={idx}
@@ -158,7 +158,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                   </div>
 
                   {/* Durations Display */}
-                  <div className="mb-8">
+                  <div className="mb-5">
                     <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3 font-semibold flex items-center gap-2">
                       <Clock className="w-3 h-3" />
                       <span>Available Durations</span>
@@ -167,7 +167,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                       {item.rates.map((rate, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center justify-center bg-background border border-border/40 rounded-xl py-2.5 px-4 flex-1 min-w-[90px] transition-colors group-hover:border-primary/30"
+                          className="flex items-center justify-center bg-background border border-border/40 rounded-xl py-1.5 px-3 flex-1 min-w-[90px] transition-colors group-hover:border-primary/30"
                         >
                           <span className="text-xs text-foreground font-medium">
                             {rate.time}
@@ -179,7 +179,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                 </div>
 
                 {/* Action Footer */}
-                <div className="pt-5 border-t border-border/10 flex items-center justify-between text-[13px] text-primary tracking-[0.2em] uppercase font-semibold mt-auto">
+                <div className="pt-4 border-t border-border/10 flex items-center justify-between text-[13px] text-primary tracking-[0.2em] uppercase font-semibold mt-auto">
                   <span className="transition-colors group-hover:text-primary/90">
                     Book This Therapy
                   </span>

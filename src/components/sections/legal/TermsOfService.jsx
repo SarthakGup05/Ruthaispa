@@ -28,9 +28,9 @@ export default function TermsOfService() {
   ];
 
   return (
-    <article id="simulated-page-terms-content" className="py-16 md:py-24 px-6 bg-background transition-colors duration-300">
+    <article id="simulated-page-terms-content" className="py-10 md:py-14 px-6 bg-transparent transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
-        <FadeIn direction="up" delay={0.05} duration={0.8} className="text-center mb-12">
+        <FadeIn direction="up" delay={0.05} duration={0.8} className="text-center mb-8">
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold">Sanctuary Rules</span>
           <h2 className="text-3xl md:text-5xl mt-2 font-normal text-foreground">Terms of Service</h2>
           <PetalDivider className="my-4" />
@@ -39,11 +39,11 @@ export default function TermsOfService() {
           </p>
         </FadeIn>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6">
           {sections.map((sec, idx) => (
-            <FadeIn key={idx} direction="up" delay={0.1 * idx} duration={0.8} className="flex gap-4 p-6 bg-card/75 dark:bg-card/30 rounded-2xl border border-border/25 backdrop-blur-sm">
+            <FadeIn key={idx} direction="up" delay={0.1 * idx} duration={0.8} className="flex gap-4 p-4 md:p-5 bg-card/75 dark:bg-card/30 rounded-2xl border border-border/25 backdrop-blur-sm">
               {sec.icon}
-              <div className="flex flex-col gap-2 text-left">
+              <div className="flex flex-col gap-1 text-left">
                 <h3 className="font-serif text-lg font-semibold text-foreground">{sec.title}</h3>
                 <p className="text-muted-foreground text-sm font-light leading-relaxed">{sec.content}</p>
               </div>
@@ -51,7 +51,7 @@ export default function TermsOfService() {
           ))}
         </div>
 
-        <FadeIn direction="up" delay={0.5} duration={0.8} className="mt-12 text-center border-t border-border/10 pt-6 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">
+        <FadeIn direction="up" delay={0.5} duration={0.8} className="mt-8 text-center border-t border-border/10 pt-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">
           Last Updated: June 2026 • RUA Thai Spa sanctuary guidelines
         </FadeIn>
       </div>

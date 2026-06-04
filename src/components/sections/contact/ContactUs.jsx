@@ -10,7 +10,7 @@ export default function ContactUs() {
   return (
     <section
       id="contact"
-      className="relative py-12 md:py-16 px-6 overflow-hidden bg-background border-t border-border/10 transition-colors duration-500 z-0"
+      className="relative py-8 md:py-10 px-6 overflow-hidden bg-transparent border-t border-border/10 transition-colors duration-500 z-0"
     >
       {/* Soft atmospheric background glow */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[45%] h-[50%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
@@ -23,7 +23,7 @@ export default function ContactUs() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-        <FadeIn direction="up" className="text-center mb-10 flex flex-col items-center">
+        <FadeIn direction="up" className="text-center mb-6 flex flex-col items-center">
           <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-primary font-semibold mb-4">
             Directions & Bookings
           </span>
@@ -33,7 +33,7 @@ export default function ContactUs() {
           <PetalDivider />
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Side: Picture panel */}
           <FadeIn
             direction="right"
@@ -61,7 +61,7 @@ export default function ContactUs() {
           <StaggerContainer
             staggerChildren={0.15}
             delayChildren={0.2}
-            className="lg:col-span-6 flex flex-col gap-8"
+            className="lg:col-span-6 flex flex-col gap-5"
           >
             <StaggerItem direction="left">
               <h3 className="text-3xl font-serif font-normal mb-4 text-foreground leading-snug">
@@ -75,7 +75,7 @@ export default function ContactUs() {
             </StaggerItem>
 
             {/* Coordinates Details Block */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               <StaggerItem direction="left" className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary bg-primary/5 shrink-0 mt-1">
                   <MapPin className="w-5 h-5" strokeWidth={1.5} />
@@ -112,7 +112,7 @@ export default function ContactUs() {
             </div>
 
             {/* Contact Action Buttons */}
-            <StaggerItem direction="left" className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-border/10">
+            <StaggerItem direction="left" className="flex flex-col sm:flex-row items-center gap-3 pt-3 border-t border-border/10">
               <a
                 href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session."
                 target="_blank"

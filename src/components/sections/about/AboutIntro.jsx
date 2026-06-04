@@ -9,7 +9,7 @@ export default function AboutIntro() {
   return (
     <section
       id="about"
-      className="relative py-20 md:py-24 px-6 bg-secondary/5 dark:bg-[#150f0c] transition-colors duration-500 border-y border-border/10 overflow-hidden z-0"
+      className="relative py-10 md:py-14 px-6 bg-secondary/5 dark:bg-[#150f0c] transition-colors duration-500 border-y border-border/10 overflow-hidden z-0"
     >
       {/* Soft atmospheric background glow */}
       <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[55%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
@@ -24,14 +24,14 @@ export default function AboutIntro() {
       <IncenseSmoke className="absolute top-16 right-4 -z-10 opacity-40 hidden xl:block" height={350} />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column: Narrative Story & Credentials */}
-          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-6 text-left">
+          <FadeIn direction="right" className="lg:col-span-7 flex flex-col gap-4 text-left">
             <div>
               <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-primary font-semibold mb-3 block">
                 Our Lineage & Story
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif font-normal text-foreground mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-normal text-foreground mb-4 leading-tight">
                 Preserving Ancient <br />
                 Siamese Wellness
               </h2>
@@ -40,7 +40,7 @@ export default function AboutIntro() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-5 text-muted-foreground text-sm font-light leading-relaxed">
+            <div className="flex flex-col gap-4 text-muted-foreground text-sm font-light leading-relaxed">
               <p>
                 RUA Thai Spa was founded on a singular commitment: to deliver
                 traditional, uncompromised Thai therapeutic massage. Our
@@ -61,8 +61,8 @@ export default function AboutIntro() {
             </div>
 
             {/* Badges / Stats grid */}
-            <StaggerContainer className="grid grid-cols-3 gap-4 pt-6 border-t border-border/10 mt-2" staggerChildren={0.15} delayChildren={0.3}>
-              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
+            <StaggerContainer className="grid grid-cols-3 gap-3 pt-4 border-t border-border/10 mt-1" staggerChildren={0.15} delayChildren={0.3}>
+              <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   18+
                 </span>
@@ -70,7 +70,7 @@ export default function AboutIntro() {
                   Yrs Pedigree
                 </span>
               </StaggerItem>
-              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
+              <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   100%
                 </span>
@@ -78,7 +78,7 @@ export default function AboutIntro() {
                   Female Certified
                 </span>
               </StaggerItem>
-              <StaggerItem direction="up" className="p-4 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
+              <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
                 <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
                   Organic
                 </span>

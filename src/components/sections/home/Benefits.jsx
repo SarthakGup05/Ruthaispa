@@ -37,7 +37,7 @@ export default function Benefits() {
   ];
 
   return (
-    <section id="benefits" className="relative py-32 px-6 bg-background overflow-hidden z-0 transition-colors duration-500">
+    <section id="benefits" className="relative py-12 md:py-16 px-6 bg-transparent overflow-hidden z-0 transition-colors duration-500">
       
       {/* 
         Ambient Background Gradients (The "Lure")
@@ -49,21 +49,21 @@ export default function Benefits() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-24 flex flex-col items-center">
+        <div className="text-center mb-8 flex flex-col items-center">
           <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-primary font-semibold mb-4">
             Wellness Foundations
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif font-normal text-foreground mb-6">
+          <h2 className="text-4xl md:text-6xl font-serif font-normal text-foreground mb-4">
             Traditional Healing Benefits
           </h2>
           <PetalDivider />
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-8 font-light leading-relaxed">
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-4 font-light leading-relaxed">
             Traditional Thai massage works deeper than standard therapies, serving as a physical and mental realignment system to promote long-term vitality.
           </p>
         </div>
 
         {/* Benefits Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {benefitItems.map((item, idx) => (
             <div 
               key={idx} 
@@ -72,16 +72,16 @@ export default function Benefits() {
               {/* Animated Gradient Border */}
               <div className="absolute inset-0 bg-gradient-to-b from-border/20 to-transparent group-hover:from-primary/40 group-hover:to-transparent transition-colors duration-500 rounded-3xl" />
               
-              <div className="relative h-full bg-card/75 dark:bg-card/20 backdrop-blur-md border border-border/25 rounded-[22px] p-8 md:p-10 text-left flex flex-col items-start overflow-hidden">
+              <div className="relative h-full bg-card/75 dark:bg-card/20 backdrop-blur-md border border-border/25 rounded-[22px] p-6 md:p-8 text-left flex flex-col items-start overflow-hidden">
                 {/* Internal Hover Glow */}
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 {/* Icon with interactive container */}
-                <div className="relative w-14 h-14 rounded-full flex items-center justify-center mb-8 border border-primary/20 bg-background/50 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_20px_rgba(230,210,167,0.4)] transition-all duration-500 ease-out z-10">
+                <div className="relative w-14 h-14 rounded-full flex items-center justify-center mb-5 border border-primary/20 bg-background/50 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_20px_rgba(230,210,167,0.4)] transition-all duration-500 ease-out z-10">
                   {React.cloneElement(item.icon, { className: "w-6 h-6", strokeWidth: 1.5 })}
                 </div>
 
-                <h3 className="text-2xl font-serif text-foreground mb-4 relative z-10">
+                <h3 className="text-2xl font-serif text-foreground mb-2 relative z-10">
                   {item.title}
                 </h3>
                 
