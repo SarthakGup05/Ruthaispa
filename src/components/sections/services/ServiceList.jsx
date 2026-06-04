@@ -109,6 +109,7 @@ export default function ServiceList({ selectedService, setSelectedService }) {
           <StaggerItem key={item.id} direction="up" distance={40}>
             <HoverLift liftAmount={-6} className="h-full">
               <div
+                id={`massage-${item.id}`}
                 onClick={() => {
                   setSelectedService(item.id);
                   // Scroll to booking planner smoothly
@@ -116,10 +117,10 @@ export default function ServiceList({ selectedService, setSelectedService }) {
                     .getElementById("pricing-planner")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className={`group p-8 bg-card/50 backdrop-blur-sm border rounded-3xl text-left cursor-pointer transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
+                className={`group p-8 bg-card/85 dark:bg-card/50 backdrop-blur-sm border rounded-3xl text-left cursor-pointer transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
                   selectedService === item.id
                     ? "border-primary/60 bg-gradient-to-br from-card/90 to-primary/5 shadow-xl shadow-primary/10"
-                    : "border-border/15 hover:border-primary/40"
+                    : "border-border/30 dark:border-border/15 hover:border-primary/40"
                 }`}
               >
                 <div>

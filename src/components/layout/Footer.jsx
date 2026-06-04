@@ -5,7 +5,7 @@ import { Whatsapp } from '../icons/whatsapp';
 import Logo from '../ui/Logo';
 import { FadeIn } from '../ui/motion';
 
-export default function Footer() {
+export default function Footer({ setCurrentPage, setSelectedService }) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -20,25 +20,50 @@ export default function Footer() {
         
         {/* Brand & Contact Section */}
         <div className="md:col-span-12 lg:col-span-4 flex flex-col pr-0 lg:pr-8">
-          <a href="#" className="inline-block mb-4 group">
+          <a
+            id="footer-brand-logo"
+            data-testid="footer-brand-logo"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setCurrentPage?.("home");
+            }}
+            className="inline-block mb-4 group"
+            aria-label="RUA Thai Spa Home"
+          >
             <Logo
               className="h-32 md:h-36 w-auto transition-transform duration-700 ease-out group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(230,210,167,0.1)]"
             />
           </a>
           
           <address className="flex flex-col gap-3.5 not-italic">
-            <a href="#" className="flex items-start gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group">
+            <a
+              id="footer-contact-address"
+              data-testid="footer-contact-address"
+              href="#"
+              className="flex items-start gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group"
+            >
               <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5 group-hover:-translate-y-1 transition-transform duration-300" />
               <span className="leading-relaxed font-light">
                 Shop No. B216, 2nd Floor, City Centre 2<br />
                 Kolkata - 700157
               </span>
             </a>
-            <a href="tel:+917449962261" className="flex items-center gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group">
+            <a
+              id="footer-contact-phone"
+              data-testid="footer-contact-phone"
+              href="tel:+917449962261"
+              className="flex items-center gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group"
+            >
               <Phone className="w-4 h-4 text-primary shrink-0 group-hover:-translate-y-1 transition-transform duration-300" />
               <span className="font-light tracking-wide">+91 74499 62261</span>
             </a>
-            <a href="mailto:bookings@ruathaispa.com" className="flex items-center gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group">
+            <a
+              id="footer-contact-email"
+              data-testid="footer-contact-email"
+              href="mailto:bookings@ruathaispa.com"
+              className="flex items-center gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group"
+            >
               <Mail className="w-4 h-4 text-primary shrink-0 group-hover:-translate-y-1 transition-transform duration-300" />
               <span className="font-light tracking-wide">bookings@ruathaispa.com</span>
             </a>
@@ -46,15 +71,29 @@ export default function Footer() {
         </div>
 
         {/* Navigation - Explore */}
-        <nav className="md:col-span-4 lg:col-span-2 pt-1">
-          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4">
+        <nav className="md:col-span-4 lg:col-span-2 pt-1 font-sans">
+          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4 font-semibold">
             Explore
           </h4>
           <ul className="flex flex-col gap-3 text-[13px] font-light text-muted-foreground">
-            {['Home', 'About Us', 'Services', 'Contact Us'].map((item) => (
-              <li key={item}>
-                <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="group relative inline-block transition-colors hover:text-primary pb-1">
-                  {item}
+            {[
+              { name: 'Home', page: 'home' },
+              { name: 'About Us', page: 'about' },
+              { name: 'Services', page: 'services' },
+              { name: 'Contact Us', page: 'contact' }
+            ].map((item) => (
+              <li key={item.page}>
+                <a
+                  id={`footer-link-explore-${item.page}`}
+                  data-testid={`footer-link-explore-${item.page}`}
+                  href={`#${item.page}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage?.(item.page);
+                  }}
+                  className="group relative inline-block transition-colors hover:text-primary pb-1 cursor-pointer"
+                >
+                  {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 ease-out group-hover:w-full" />
                 </a>
               </li>
@@ -62,22 +101,33 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* Navigation - Wellness */}
-        <nav className="md:col-span-4 lg:col-span-3 pt-1">
-          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4">
-            Wellness
+        {/* Navigation - Signature Treatments */}
+        <nav className="md:col-span-4 lg:col-span-3 pt-1 font-sans">
+          <h4 className="font-serif text-xs tracking-[0.2em] text-foreground uppercase mb-4 font-semibold">
+            Treatments
           </h4>
           <ul className="flex flex-col gap-3 text-[13px] font-light text-muted-foreground">
             {[
-              'Traditional Thai Massage',
-              'Aromatherapy Rituals',
-              'Deep Tissue Therapy',
-              'Hot Herbal Compress',
-              'Couples Retreat'
+              { name: 'Swedish Massage', id: 'swedish' },
+              { name: 'Deep Tissue Massage', id: 'deep-tissue' },
+              { name: 'Aromatherapy Massage', id: 'aroma' },
+              { name: 'Balinese Massage', id: 'balinese' }
             ].map((item) => (
-              <li key={item}>
-                <a href="#" className="group relative inline-block transition-colors hover:text-primary pb-1">
-                  {item}
+              <li key={item.id}>
+                <a
+                  id={`footer-link-treatment-${item.id}`}
+                  data-testid={`footer-link-treatment-${item.id}`}
+                  href={`#services`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (setCurrentPage && setSelectedService) {
+                      setSelectedService(item.id);
+                      setCurrentPage('services');
+                    }
+                  }}
+                  className="group relative inline-block transition-colors hover:text-primary pb-1 cursor-pointer"
+                >
+                  {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 ease-out group-hover:w-full" />
                 </a>
               </li>
@@ -105,6 +155,8 @@ export default function Footer() {
             <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/70 mb-2.5 font-semibold">Connect With Us</p>
             <div className="flex gap-4">
               <a 
+                id="footer-social-instagram"
+                data-testid="footer-social-instagram"
                 href="https://instagram.com/ruathaispa" 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -114,6 +166,8 @@ export default function Footer() {
                 <InstagramIcon size={18} />
               </a>
               <a 
+                id="footer-social-whatsapp"
+                data-testid="footer-social-whatsapp"
                 href="https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20inquire%20about%20booking%20a%20relaxation%20session." 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -134,17 +188,41 @@ export default function Footer() {
           <p className="flex items-center gap-1 normal-case tracking-normal font-sans text-xs text-muted-foreground">
             Made with <Heart className="w-3 h-3 text-destructive fill-destructive animate-pulse mx-0.5" /> by{" "}
             <a
+              id="footer-credits-author"
+              data-testid="footer-credits-author"
               href="https://saarthak.xyz/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-foreground hover:text-primary transition-colors hover:underline ml-1"
             >
-              Sarthak Gupta
+              saarthak.xyz
             </a>
           </p>
           <div className="flex gap-6 font-medium">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a
+              id="footer-legal-privacy"
+              data-testid="footer-legal-privacy"
+              href="#privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage?.("privacy");
+              }}
+              className="hover:text-primary transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </a>
+            <a
+              id="footer-legal-terms"
+              data-testid="footer-legal-terms"
+              href="#terms"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage?.("terms");
+              }}
+              className="hover:text-primary transition-colors cursor-pointer"
+            >
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>
