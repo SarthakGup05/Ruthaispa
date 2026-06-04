@@ -144,7 +144,9 @@ function App() {
             muted
             playsInline
             preload="metadata"
-          />
+          >
+            <track kind="captions" />
+          </video>
           {/* Subtle gold/teal overlay to tint the video */}
           <div className="absolute inset-0 bg-primary/3 dark:bg-primary/1 mix-blend-overlay" />
           

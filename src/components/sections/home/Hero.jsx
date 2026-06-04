@@ -113,6 +113,7 @@ export default function VideoSlider({ slides = SLIDES }) {
             {/* Prioritize WebM format for modern browsers */}
             <source src={slide.videoSrc} type="video/webm" />
             <source src={slide.videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+            <track kind="captions" />
             Your browser does not support the video tag.
           </video>
 
