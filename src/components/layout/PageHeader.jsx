@@ -251,6 +251,20 @@ export default function PageHeader({
         .animate-petal-drift-2 { animation: petal-drift-2-anim 20s linear infinite; animation-delay: 4s; top: 0; left: 0; }
         .animate-petal-drift-3 { animation: petal-drift-3-anim 18s linear infinite; animation-delay: 8s; top: 0; left: 0; }
         .animate-petal-drift-4 { animation: petal-drift-4-anim 22s linear infinite; animation-delay: 12s; top: 0; left: 0; }
+
+        @media (max-width: 767px) {
+          .animate-ken-burns {
+            animation: none !important;
+            transform: scale(1.05) !important;
+          }
+          .animate-petal-drift-1,
+          .animate-petal-drift-2,
+          .animate-petal-drift-3,
+          .animate-petal-drift-4 {
+            animation: none !important;
+            display: none !important;
+          }
+        }
       `}</style>
     </section>
   );

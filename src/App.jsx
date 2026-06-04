@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/home/Hero';
 import PageHeader from './components/layout/PageHeader';
+import { useIsMobile } from './hooks/use-mobile';
 
 // Lazy-load all below-fold sections — keeps the initial JS bundle small
 const Philosophy = lazy(() => import('./components/sections/home/Philosophy'));
@@ -21,6 +22,7 @@ const FloatingActions = lazy(() => import('./components/layout/FloatingActions')
 const SectionFallback = () => <div className="min-h-[40px]" aria-hidden="true" />;
 
 function App() {
+  const isMobile = useIsMobile();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved !== null ? saved === 'dark' : true;
@@ -132,7 +134,7 @@ function App() {
   return (
     <div className="min-h-screen bg-transparent text-foreground transition-colors duration-300 flex flex-col font-sans relative">
       {/* Global Luxury Glassy Background Video (Home Page Only) */}
-      {currentPage === 'home' && (
+      {currentPage === 'home' && !isMobile && (
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none" aria-hidden="true">
           <video
             src="/massage.mp4"

@@ -217,6 +217,14 @@
 }
 
 @media (max-width: 767px) {
+  /* Disable expensive background shimmers and overlays on mobile */
+  body::before,
+  body::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+  }
+
   .animate-float,
   .animate-float-slow,
   .animate-drift-right,
