@@ -30,8 +30,8 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
   const headerBaseClass =
     "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ease-in-out border-b";
   const headerScrollClass = isScrolled
-    ? "bg-background/90 backdrop-blur-xl border-border/20 py-3 md:py-4 shadow-sm"
-    : "bg-transparent border-transparent py-5 md:py-6";
+    ? "bg-background/90 backdrop-blur-xl border-border/20 py-2 md:py-2.5 shadow-sm"
+    : "bg-transparent border-transparent py-3 md:py-4";
 
   const mutedTextClass = isScrolled
     ? "text-muted-foreground hover:text-primary"
@@ -69,8 +69,8 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
               !isScrolled && "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
             } ${
               isScrolled 
-                ? "h-12 md:h-16" // Scrolled height (compact)
-                : "h-16 md:h-24" // Top of page height (prominent but contained)
+                ? "h-10 md:h-12" // Scrolled height (compact)
+                : "h-12 md:h-16" // Top of page height (prominent but contained)
             }`}
           />
         </div>

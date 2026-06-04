@@ -130,7 +130,27 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 flex flex-col font-sans relative">
+    <div className="min-h-screen bg-transparent text-foreground transition-colors duration-300 flex flex-col font-sans relative">
+      {/* Global Luxury Glassy Background Video (Home Page Only) */}
+      {currentPage === 'home' && (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none" aria-hidden="true">
+          <video
+            src="/massage.mp4"
+            className="w-full h-full object-cover opacity-[0.035] dark:opacity-[0.05] filter grayscale contrast-125 mix-blend-luminosity"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+          {/* Subtle gold/teal overlay to tint the video */}
+          <div className="absolute inset-0 bg-primary/3 dark:bg-primary/1 mix-blend-overlay" />
+          
+          {/* Vignette mask to darken edges and focus attention on content */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,var(--background)_100%)] opacity-85 dark:opacity-90" />
+        </div>
+      )}
+
       {/* Top Navbar Header — eagerly loaded */}
       <Navbar
         darkMode={darkMode}
@@ -140,7 +160,7 @@ function App() {
       />
 
       {/* Main Content Layout */}
-      <main className="flex-grow flex flex-col">
+      <main className="flex-grow flex flex-col relative z-10">
         {currentPage === 'home' ? (
           <div id="simulated-page-home" className="flex flex-col">
             {/* 1. Hero Welcome Section — eagerly loaded (above the fold) */}

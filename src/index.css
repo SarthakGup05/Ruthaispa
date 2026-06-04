@@ -144,7 +144,69 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply text-foreground transition-colors duration-300;
+    background: radial-gradient(circle at 15% 15%, oklch(0.995 0.005 85) 0%, oklch(0.985 0.008 85) 45%, oklch(0.955 0.015 85) 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  .dark body {
+    background: radial-gradient(circle at 80% 20%, oklch(0.40 0.08 195) 0%, oklch(0.31 0.06 195) 45%, oklch(0.20 0.04 195) 100%);
+    background-attachment: fixed;
+  }
+  /* Shimmer sheen overlay mimicking reflections on polished glass */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background: linear-gradient(135deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0) 40%, 
+      rgba(255,255,255,0.03) 48%, 
+      rgba(255,255,255,0.08) 50%, 
+      rgba(255,255,255,0.03) 52%, 
+      rgba(255,255,255,0) 60%, 
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 250% 250%;
+    background-position: 0% 0%;
+    animation: bg-shine 20s ease-in-out infinite;
+  }
+  .dark body::before {
+    background: linear-gradient(135deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0) 42%, 
+      rgba(255,255,255,0.02) 48%, 
+      rgba(255,255,255,0.06) 50%, 
+      rgba(255,255,255,0.02) 52%, 
+      rgba(255,255,255,0) 58%, 
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 250% 250%;
+    background-position: 0% 0%;
+    animation: bg-shine 25s ease-in-out infinite;
+  }
+  /* Organic ambient light blobs */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9;
+    pointer-events: none;
+    background: 
+      radial-gradient(circle at 15% 15%, oklch(0.38 0.08 195 / 8%) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, oklch(0.85 0.07 85 / 6%) 0%, transparent 40%);
+  }
+  .dark body::after {
+    background: 
+      radial-gradient(circle at 15% 15%, oklch(0.85 0.07 85 / 6%) 0%, transparent 45%),
+      radial-gradient(circle at 85% 85%, oklch(0.38 0.08 195 / 8%) 0%, transparent 45%);
+  }
+  @keyframes bg-shine {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
   }
   html {
     @apply font-sans;

@@ -30,9 +30,9 @@ export default function PageHeader({
 }) {
   // Height options mapping
   const heightClasses = {
-    compact: "h-[250px] md:h-[300px]",
-    medium: "h-[350px] md:h-[420px]",
-    large: "h-[450px] md:h-[550px]",
+    compact: "h-[180px] md:h-[220px]",
+    medium: "h-[240px] md:h-[300px]",
+    large: "h-[320px] md:h-[400px]",
   };
 
   // Text alignment classes mapping
@@ -43,9 +43,9 @@ export default function PageHeader({
 
   // Dynamic content padding based on banner height
   const paddingClasses = {
-    compact: "pt-24 md:pt-28 pb-4",
-    medium: "pt-28 md:pt-36 pb-6",
-    large: "pt-36 md:pt-48 pb-10",
+    compact: "pt-16 md:pt-20 pb-3",
+    medium: "pt-20 md:pt-24 pb-4",
+    large: "pt-24 md:pt-32 pb-6",
   };
 
   const sectionsList = [
@@ -58,7 +58,7 @@ export default function PageHeader({
 
   return (
     <section
-      className={`relative w-full ${heightClasses[height]} flex items-start justify-center overflow-hidden bg-background select-none group border-b border-border/10`}
+      className={`relative w-full ${heightClasses[height]} flex items-start justify-center overflow-hidden bg-transparent select-none group border-b border-border/10`}
       aria-label={`${title} Header Banner`}
     >
       {/* 1. Ken Burns Animated Background Layer */}
@@ -160,14 +160,14 @@ export default function PageHeader({
 
           {/* Heading Title */}
           <FadeIn direction="up" delay={0.1} duration={0.8}>
-            <h1 className="text-3xl md:text-6xl font-light tracking-[0.18em] text-white uppercase mb-2">
+            <h1 className="text-3xl md:text-6xl font-light tracking-[0.18em] text-white uppercase mb-1">
               {title}
             </h1>
           </FadeIn>
 
           {/* Decorative Divider */}
           <FadeIn direction="up" delay={0.2} duration={0.8} className="w-full flex justify-center">
-            <PetalDivider className="my-2 select-none opacity-85" />
+            <PetalDivider className="my-1 select-none opacity-85" />
           </FadeIn>
 
           {/* Subtitle Description */}
