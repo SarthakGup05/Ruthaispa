@@ -5,7 +5,7 @@ import { Whatsapp } from '../icons/whatsapp';
 import Logo from '../ui/Logo';
 import { FadeIn } from '../ui/motion';
 
-export default function Footer({ setCurrentPage, setSelectedService }) {
+function Footer({ setCurrentPage, setSelectedService }) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -240,3 +240,5 @@ export default function Footer({ setCurrentPage, setSelectedService }) {
     </footer>
   );
 }
+
+export default React.memo(Footer);

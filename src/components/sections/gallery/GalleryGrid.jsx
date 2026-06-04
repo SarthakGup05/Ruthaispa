@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PetalDivider from '../../ui/PetalDivider';
 
-export default function GalleryGrid() {
+function GalleryGrid() {
   const [activeTab, setActiveTab] = useState('all');
 
   const categories = [
@@ -92,3 +92,5 @@ export default function GalleryGrid() {
     </section>
   );
 }
+
+export default React.memo(GalleryGrid);

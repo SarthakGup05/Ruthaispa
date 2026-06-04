@@ -4,7 +4,7 @@ import { Whatsapp } from '../../icons/whatsapp';
 import PetalDivider from "../../ui/PetalDivider";
 import { FadeIn, ScaleIn } from "../../ui/motion";
 
-export default function BookingPlanner({
+function BookingPlanner({
   selectedService,
   setSelectedService,
 }) {
@@ -371,3 +371,5 @@ Please check availability for me!`;
     </section>
   );
 }
+
+export default React.memo(BookingPlanner);

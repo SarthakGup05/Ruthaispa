@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
+function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const isMobile = useIsMobile();
@@ -281,3 +281,5 @@ export default function Navbar({ darkMode, setDarkMode, currentPage, setCurrentP
     </header>
   );
 }
+
+export default React.memo(Navbar);

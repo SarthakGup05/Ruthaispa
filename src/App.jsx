@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/home/Hero';
 import PageHeader from './components/layout/PageHeader';
@@ -126,10 +126,10 @@ function App() {
   }, []);
 
   // Wrapper function to keep URL hash in sync with state transitions
-  const navigateToPage = (page) => {
+  const navigateToPage = useCallback((page) => {
     window.location.hash = page === 'home' ? '' : `#${page}`;
     setCurrentPage(page);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-transparent text-foreground transition-colors duration-300 flex flex-col font-sans relative">

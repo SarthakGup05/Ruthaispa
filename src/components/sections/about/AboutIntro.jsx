@@ -5,7 +5,7 @@ import FloatingLotus from "../../graphics/FloatingLotus";
 import IncenseSmoke from "../../graphics/IncenseSmoke";
 import { FadeIn, StaggerContainer, StaggerItem } from "../../ui/motion";
 
-export default function AboutIntro() {
+function AboutIntro() {
   return (
     <section
       id="about"
@@ -106,3 +106,5 @@ export default function AboutIntro() {
     </section>
   );
 }
+
+export default React.memo(AboutIntro);

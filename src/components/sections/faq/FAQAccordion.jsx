@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import PetalDivider from '../../ui/PetalDivider';
 
-export default function FAQAccordion() {
+function FAQAccordion() {
   const [openIdx, setOpenIdx] = useState(0);
 
   const faqs = [
@@ -77,3 +77,5 @@ export default function FAQAccordion() {
     </section>
   );
 }
+
+export default React.memo(FAQAccordion);

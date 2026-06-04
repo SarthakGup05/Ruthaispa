@@ -16,7 +16,7 @@ import { FadeIn } from "../ui/motion";
  * Features a Ken Burns background effect, floating organic petals,
  * glassmorphic breadcrumb trail, and an interactive quick-action dropdown.
  */
-export default function PageHeader({
+function PageHeader({
   title,
   subtitle,
   bgImage = "/spa_interior.webp",
@@ -269,3 +269,5 @@ export default function PageHeader({
     </section>
   );
 }
+
+export default React.memo(PageHeader);

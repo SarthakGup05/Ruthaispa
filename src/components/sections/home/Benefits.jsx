@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, Activity, ShieldAlert, Sparkles, Smile, RefreshCw } from 'lucide-react';
 import PetalDivider from '../../ui/PetalDivider';
 
-export default function Benefits() {
+function Benefits() {
   const benefitItems = [
     {
       icon: <Activity className="w-5 h-5" />,
@@ -96,3 +96,5 @@ export default function Benefits() {
     </section>
   );
 }
+
+export default React.memo(Benefits);

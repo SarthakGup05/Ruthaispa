@@ -5,7 +5,7 @@ import ZenCircles from "../../graphics/ZenCircles";
 import FloatingLotus from "../../graphics/FloatingLotus";
 import { FadeIn, StaggerContainer, StaggerItem, HoverLift } from "../../ui/motion";
 
-export default function ServiceList({ selectedService, setSelectedService }) {
+function ServiceList({ selectedService, setSelectedService }) {
   // Data strictly extracted from the provided menu
   const services = [
     {
@@ -193,3 +193,5 @@ export default function ServiceList({ selectedService, setSelectedService }) {
     </section>
   );
 }
+
+export default React.memo(ServiceList);

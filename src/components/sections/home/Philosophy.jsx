@@ -23,7 +23,7 @@ const philosophyPoints = [
   }
 ];
 
-export default function Philosophy() {
+function Philosophy() {
   return (
     <section 
       id="why-choose-us" 
@@ -168,3 +168,5 @@ export default function Philosophy() {
     </section>
   );
 }
+
+export default React.memo(Philosophy);
