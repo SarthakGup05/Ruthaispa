@@ -13,6 +13,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
 
   // Handle scroll effect for dynamic styling
@@ -181,7 +182,7 @@ function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
           </button>
 
           {/* Hamburger Menu Trigger */}
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button
                 id="nav-mobile-menu-trigger"
@@ -206,6 +207,7 @@ function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
                 className="flex items-center justify-start p-8 pt-12 pb-6 border-b border-border/10 cursor-pointer"
                 onClick={() => {
                   setCurrentPage?.("home");
+                  setIsOpen(false);
                 }}
               >
                 <div className="flex items-center gap-3 sm:gap-4 select-none">
@@ -235,6 +237,7 @@ function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
                       onClick={(e) => {
                         e.preventDefault();
                         setCurrentPage?.(link.page);
+                        setIsOpen(false);
                       }}
                       className="flex items-center gap-6 group"
                     >
@@ -264,7 +267,10 @@ function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
                   <Button
                     id="nav-book-now-mobile"
                     data-testid="nav-book-now-mobile"
-                    onClick={() => setCurrentPage?.("booking")}
+                    onClick={() => {
+                      setCurrentPage?.("booking");
+                      setIsOpen(false);
+                    }}
                     size="lg"
                     className="w-full rounded-full py-6 uppercase tracking-widest text-xs font-bold shadow-lg shadow-black/10 hover:shadow-black/15 cursor-pointer"
                   >

@@ -324,13 +324,18 @@ function GalleryPage() {
                         handlePrev();
                       }
                     }}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      if (e.target === e.currentTarget) {
+                        handleClose();
+                      }
+                    }}
                     className={`absolute w-full h-full flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
                   >
                     <img
                       src={activeImage.src}
                       alt={activeImage.title}
-                      className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-white/5 pointer-events-none select-none"
+                      draggable="false"
+                      className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-white/5 select-none"
                     />
                   </motion.div>
                 </AnimatePresence>
