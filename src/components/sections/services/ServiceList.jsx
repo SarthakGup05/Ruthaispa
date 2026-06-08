@@ -1,9 +1,14 @@
 import React from "react";
-import { ArrowRight, Clock } from "lucide-react";
+import { Clock, Phone } from "lucide-react";
 import PetalDivider from "../../ui/PetalDivider";
 import ZenCircles from "../../graphics/ZenCircles";
 import FloatingLotus from "../../graphics/FloatingLotus";
 import { FadeIn, StaggerContainer, StaggerItem, HoverLift } from "../../ui/motion";
+import { Whatsapp } from "../../icons/whatsapp";
+
+const PHONE = "+917449962261";
+const buildWhatsAppLink = (serviceName) =>
+  `https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20pre-book%20a%20${encodeURIComponent(serviceName)}%20session.`;
 
 function ServiceList({ selectedService, setSelectedService }) {
   // Data strictly extracted from the provided menu
@@ -110,14 +115,7 @@ function ServiceList({ selectedService, setSelectedService }) {
             <HoverLift liftAmount={-6} className="h-full">
               <div
                 id={`massage-${item.id}`}
-                onClick={() => {
-                  setSelectedService(item.id);
-                  // Scroll to booking planner smoothly
-                  document
-                    .getElementById("pricing-planner")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className={`group p-5 md:p-6 bg-card/85 dark:bg-card/50 backdrop-blur-sm border rounded-3xl text-left cursor-pointer transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
+                className={`group p-5 md:p-6 bg-card/85 dark:bg-card/50 backdrop-blur-sm border rounded-3xl text-left transition-all duration-500 flex flex-col justify-between h-full shadow-sm hover:shadow-2xl hover:shadow-primary/10 ${
                   selectedService === item.id
                     ? "border-primary/60 bg-gradient-to-br from-card/90 to-primary/5 shadow-xl shadow-primary/10"
                     : "border-border/30 dark:border-border/15 hover:border-primary/40"
@@ -178,12 +176,68 @@ function ServiceList({ selectedService, setSelectedService }) {
                   </div>
                 </div>
 
-                {/* Action Footer */}
-                <div className="pt-4 border-t border-border/10 flex items-center justify-between text-[13px] text-primary tracking-[0.2em] uppercase font-semibold mt-auto">
-                  <span className="transition-colors group-hover:text-primary/90">
-                    Book This Therapy
-                  </span>
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                {/* Action Footer — WhatsApp + Call CTAs */}
+                <div className="pt-4 border-t border-border/10 mt-auto flex gap-2.5">
+
+                  {/* WhatsApp pill */}
+                  <a
+                    href={buildWhatsAppLink(item.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="group/wa relative flex-1 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D8C495]"
+                    style={{
+                      background: "#D8C495",
+                      color: "#1a1208",
+                      boxShadow: "0 3px 14px rgba(216,196,149,0.35)",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 6px 22px rgba(216,196,149,0.55)"; e.currentTarget.style.background = "#cdb97e"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 3px 14px rgba(216,196,149,0.35)"; e.currentTarget.style.background = "#D8C495"; }}
+                  >
+                    {/* shimmer */}
+                    <span className="absolute inset-0 -translate-x-full group-hover/wa:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 pointer-events-none" />
+                    {/* icon bubble — white bg so green icon pops on gold */}
+                    <span
+                      className="flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-sm shrink-0 transition-transform duration-200 group-hover/wa:scale-110"
+                      style={{ color: "#25D366" }}
+                    >
+                      <Whatsapp size={13} />
+                    </span>
+                    <span className="tracking-wide">Book via WhatsApp</span>
+                  </a>
+
+                  {/* Call pill */}
+                  <a
+                    href={`tel:${PHONE}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="group/call relative flex-1 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    style={{
+                      background: "transparent",
+                      border: "1.5px solid hsl(var(--primary) / 0.4)",
+                      color: "hsl(var(--primary))",
+                      boxShadow: "0 2px 10px hsl(var(--primary) / 0.07)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = "0 5px 20px hsl(var(--primary) / 0.22)";
+                      e.currentTarget.style.borderColor = "hsl(var(--primary) / 0.75)";
+                      e.currentTarget.style.background = "hsl(var(--primary) / 0.07)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 2px 10px hsl(var(--primary) / 0.07)";
+                      e.currentTarget.style.borderColor = "hsl(var(--primary) / 0.4)";
+                      e.currentTarget.style.background = "transparent";
+                    }}
+                  >
+                    {/* icon bubble */}
+                    <span
+                      className="flex items-center justify-center w-6 h-6 rounded-full shrink-0 transition-transform duration-200 group-hover/call:scale-110"
+                      style={{ background: "hsl(var(--primary) / 0.12)" }}
+                    >
+                      <Phone size={12} />
+                    </span>
+                    <span className="tracking-wide">Call Now</span>
+                  </a>
+
                 </div>
               </div>
             </HoverLift>
