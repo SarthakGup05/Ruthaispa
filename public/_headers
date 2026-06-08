@@ -1,0 +1,25 @@
+# Max Cache-Control for immutable hashed assets (JS, CSS, fonts, optimized images)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Optimized assets in subdirectories (like optimized WebP gallery files)
+/gellary/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Revalidate always for HTML files, text maps, manifests, and the service worker to ensure instant updates
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/llms.txt
+  Cache-Control: public, max-age=0, must-revalidate
+/llms-full.txt
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Global Security Headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self' https: wss:; font-src 'self' https: data:;

@@ -26,16 +26,22 @@ const SectionFallback = () => <div className="min-h-[40px]" aria-hidden="true" /
 function App() {
   const isMobile = useIsMobile();
   const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved !== null ? saved === 'dark' : true;
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      return saved !== null ? saved === 'dark' : true;
+    }
+    return true;
   });
   const [selectedService, setSelectedService] = useState('thai');
   
   // Read hash fragment for initial page routing state on reload
   const [currentPage, setCurrentPage] = useState(() => {
-    const hash = window.location.hash.replace('#', '');
-    const validPages = ['home', 'about', 'services', 'booking', 'faq', 'gallery', 'contact', 'privacy', 'terms'];
-    return validPages.includes(hash) ? hash : 'home';
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
+      const validPages = ['home', 'about', 'services', 'booking', 'faq', 'gallery', 'contact', 'privacy', 'terms'];
+      return validPages.includes(hash) ? hash : 'home';
+    }
+    return 'home';
   });
 
   // Apply dark mode class to html element and persist preference

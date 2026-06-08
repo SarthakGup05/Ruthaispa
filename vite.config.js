@@ -3,6 +3,7 @@ import fs from "fs"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
+import viteCompression from "vite-plugin-compression"
 
 // Vite server middleware to support HTTP Content Negotiation for Markdown (serving LLM-ready context to crawlers and agents)
 function markdownNegotiationPlugin() {
@@ -42,7 +43,21 @@ function markdownNegotiationPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), markdownNegotiationPlugin()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    markdownNegotiationPlugin(),
+    viteCompression({
+      algorithm: "brotliCompress",
+      ext: ".br",
+      threshold: 1024
+    }),
+    viteCompression({
+      algorithm: "gzip",
+      ext: ".gz",
+      threshold: 1024
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

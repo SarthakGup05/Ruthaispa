@@ -104,7 +104,6 @@ export default function VideoSlider({ slides = SLIDES }) {
             className="absolute inset-0 w-full h-full object-cover"
             playsInline
             muted
-            defaultMuted
             loop
             autoPlay
             preload="metadata"
