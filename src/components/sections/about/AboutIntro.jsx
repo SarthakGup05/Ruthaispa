@@ -6,6 +6,7 @@ import IncenseSmoke from "../../graphics/IncenseSmoke";
 import { FadeIn, StaggerContainer, StaggerItem } from "../../ui/motion";
 import { Button } from "../../ui/button";
 import { Whatsapp } from "../../icons/whatsapp";
+import FactualCounter from "../../ui/FactualCounter";
 
 const PHONE = "+917449962261";
 const WHATSAPP_LINK = `https://wa.me/917449962261?text=Hi%20RUA%20Thai%20Spa!%20I'd%20like%20to%20pre-book%20a%20luxury%20session.`;
@@ -92,11 +93,15 @@ function AboutIntro() {
               delayChildren={0.3}
             >
               <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
-                <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">18+</span>
+                <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
+                  <FactualCounter value={18} suffix="+" delay={0.4} />
+                </span>
                 <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">Yrs Pedigree</span>
               </StaggerItem>
               <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">
-                <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">100%</span>
+                <span className="block text-2xl md:text-3xl font-serif font-bold text-primary mb-1">
+                  <FactualCounter value={100} suffix="%" delay={0.55} />
+                </span>
                 <span className="block text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">Female Certified</span>
               </StaggerItem>
               <StaggerItem direction="up" className="p-3 bg-card/75 dark:bg-card/30 border border-border/25 rounded-2xl backdrop-blur-sm">

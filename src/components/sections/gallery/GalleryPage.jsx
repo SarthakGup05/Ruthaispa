@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2, Sparkles, ZoomIn, ZoomOut } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import FactualCounter from '../../ui/FactualCounter';
 
 const categories = [
   { id: 'all', name: 'All Sanctuary' },
@@ -107,11 +108,15 @@ function GalleryPage() {
           </div>
           <div className="flex gap-4 self-stretch md:self-auto items-center justify-between border-t md:border-t-0 md:border-l border-border/10 pt-4 md:pt-0 md:pl-8">
             <div className="text-center md:text-left">
-              <span className="block text-2xl font-serif text-primary">9</span>
+              <span className="block text-2xl font-serif text-primary">
+                <FactualCounter value={9} delay={0.25} />
+              </span>
               <span className="block text-[8px] uppercase tracking-widest text-muted-foreground font-semibold">Total Spaces</span>
             </div>
             <div className="text-center md:text-left ml-6 md:ml-10">
-              <span className="block text-2xl font-serif text-primary">4+</span>
+              <span className="block text-2xl font-serif text-primary">
+                <FactualCounter value={4} suffix="+" delay={0.4} />
+              </span>
               <span className="block text-[8px] uppercase tracking-widest text-muted-foreground font-semibold">Sanctuary Zones</span>
             </div>
           </div>
