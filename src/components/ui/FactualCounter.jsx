@@ -8,7 +8,7 @@ import { useMotionValue, useTransform, animate, useInView } from 'framer-motion'
  */
 export default function FactualCounter({ value, duration = 2.2, delay = 0.1, suffix = "", className = "" }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
