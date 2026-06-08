@@ -9,8 +9,11 @@
 # Revalidate always for HTML files, text maps, manifests, and the service worker to ensure instant updates
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+/
+  Link: </llms.txt>; rel="describedby"
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+  Link: </llms.txt>; rel="describedby"
 /llms.txt
   Cache-Control: public, max-age=0, must-revalidate
   Content-Type: text/markdown; charset=utf-8
