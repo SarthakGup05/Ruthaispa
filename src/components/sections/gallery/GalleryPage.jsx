@@ -13,15 +13,15 @@ const categories = [
 ];
 
 const galleryItems = [
-  { id: 1, src: '/gellary/IMG_1198.webp', category: 'reception', title: 'Siamese Wellness Entry', desc: 'Welcome lobby featuring local brass accents and fresh orchids.' },
-  { id: 2, src: '/gellary/IMG_1184.webp', category: 'rooms', title: 'Siam Serenity Chamber', desc: 'Mat-aligned Nuad Thai stretching mats with organic cotton dividers.' },
-  { id: 3, src: '/gellary/IMG_1189.webp', category: 'rooms', title: 'Teakwood Therapy Suite', desc: 'Bespoke therapy chamber with ambient water flows and soft warm light.' },
-  { id: 4, src: '/gellary/IMG_1190.webp', category: 'details', title: 'Aromatic Herbal Station', desc: 'Hand-prepared lemongrass, Kaffir lime, and warm compress herbal packs.' },
-  { id: 5, src: '/gellary/IMG_1192.webp', category: 'lounges', title: 'Lanna Rest Lounge', desc: 'Relaxation lounge chairs featuring custom tea sets for post-therapy recovery.' },
-  { id: 6, src: '/gellary/IMG_1194.webp', category: 'rooms', title: 'Hot Stone Therapy Bed', desc: 'Smooth heated basalt stones rested over organic wellness mats.' },
-  { id: 7, src: '/gellary/IMG_1199.webp', category: 'details', title: 'Relaxation Infusion Corner', desc: 'Ceramic teaware containing organic Lanna tea blends brewed daily.' },
-  { id: 8, src: '/gellary/IMG_1200.webp', category: 'details', title: 'Traditional Thai Foot Bath', desc: 'Warm copper basins infused with fresh lime slices and local rose petals.' },
-  { id: 9, src: '/gellary/IMG_1202.webp', category: 'lounges', title: 'Bamboo Meditative Alcove', desc: 'Semi-private relaxation zone lined with authentic organic bamboo partitions.' }
+  { id: 1, src: '/gellary/IMG_1198.webp', category: 'details', title: 'Buddha Zen Fountain', desc: 'Bedside water feature and warm candles creating a serene atmosphere.' },
+  { id: 2, src: '/gellary/IMG_1184.webp', category: 'rooms', title: 'Therapy Towel Art', desc: 'Bespoke folded towel swan and fresh rose petals on a prepared massage bed.' },
+  { id: 3, src: '/gellary/IMG_1189.webp', category: 'reception', title: 'Lobby Reception Desk', desc: 'Elegant backlit entry counter featuring gold metal trims and lucky charms.' },
+  { id: 4, src: '/gellary/IMG_1190.webp', category: 'reception', title: 'Warm Stone Hallway', desc: 'Textured stone-clad corridor with ambient spotlights leading to suites.' },
+  { id: 5, src: '/gellary/IMG_1192.webp', category: 'lounges', title: 'Relaxation Sofa Lounge', desc: 'Plush curved seating with a Buddha portrait and traditional bamboo arch.' },
+  { id: 6, src: '/gellary/IMG_1194.webp', category: 'reception', title: 'Welcome Desk Details', desc: 'Close-up of the guest relations desk with refreshments and brochures.' },
+  { id: 7, src: '/gellary/IMG_1199.webp', category: 'details', title: 'Bespoke Suite Amenities', desc: 'Scented Peony Blush candle and fresh rose petals for a personal touch.' },
+  { id: 8, src: '/gellary/IMG_1200.webp', category: 'rooms', title: 'Traditional Siam Chamber', desc: 'Spacious treatment room with warm lamp glow, carved mirror, and towel art.' },
+  { id: 9, src: '/gellary/IMG_1202.webp', category: 'rooms', title: 'Premium Healing Chamber', desc: 'Private wellness chamber showing a complete therapy bed setup.' }
 ];
 
 const slideVariants = {
