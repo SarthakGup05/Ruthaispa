@@ -74,17 +74,18 @@ function GalleryPreview({ setCurrentPage }) {
             <Button
               onClick={() => setCurrentPage?.('gallery')}
               size="lg"
-              className="mt-2 rounded-full px-8 py-6 uppercase tracking-widest text-xs font-bold shadow-lg shadow-black/10 hover:shadow-black/15 cursor-pointer flex items-center gap-2 group"
+              className="mt-2 rounded-full px-8 py-6 uppercase tracking-widest text-xs font-bold shadow-lg shadow-black/10 hover:shadow-black/15 cursor-pointer flex items-center gap-2 group w-full sm:w-auto"
             >
               <span>Explore Full Gallery</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </FadeIn>
 
-          {/* Mosaic Collage Column */}
-          <FadeIn direction="left" className="lg:col-span-7 flex justify-center items-center relative">
-            <div className="relative w-full max-w-[580px] h-[450px] md:h-[550px]">
-              
+          {/* Collage / Carousel Column */}
+          <FadeIn direction="left" className="lg:col-span-7 w-full">
+            
+            {/* Desktop Mosaic Collage (hidden on mobile, visible on md+) */}
+            <div className="hidden md:block relative w-full max-w-[580px] h-[550px] mx-auto">
               {previewImages.map((img) => (
                 <div
                   key={img.id}
@@ -108,7 +109,7 @@ function GalleryPreview({ setCurrentPage }) {
                     </span>
                   </div>
                   
-                  {/* Static Category Tag (for mobile/no-hover states) */}
+                  {/* Static Category Tag */}
                   <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white/90 text-[8px] uppercase tracking-widest px-2.5 py-1 rounded font-bold group-hover/card:opacity-0 transition-opacity duration-200">
                     {img.tag}
                   </div>
@@ -119,12 +120,60 @@ function GalleryPreview({ setCurrentPage }) {
               <div className="absolute top-[10%] right-[45%] w-12 h-12 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm flex items-center justify-center -rotate-12 z-0">
                 <span className="text-primary/40 text-lg">✿</span>
               </div>
-
             </div>
+
+            {/* Mobile Touch Carousel (visible on mobile, hidden on md+) */}
+            <div className="block md:hidden w-full relative">
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 scrollbar-none pb-4 px-4 scroll-smooth">
+                {previewImages.map((img) => (
+                  <div
+                    key={img.id}
+                    className="snap-center shrink-0 w-[82vw] aspect-[4/5] rounded-3xl overflow-hidden border border-border/10 shadow-[0_15px_30px_rgba(0,0,0,0.25)] relative group/card"
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Visual indicators / overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent z-10" />
+                    
+                    {/* Information Text at the bottom */}
+                    <div className="absolute inset-x-0 bottom-0 p-5 z-20 flex flex-col text-left">
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-primary font-extrabold mb-1">
+                        {img.tag}
+                      </span>
+                      <h3 className="text-lg font-serif font-bold text-foreground mb-0.5">
+                        {img.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Touch Helper Indicator */}
+              <div className="flex items-center justify-center gap-1.5 mt-2 text-muted-foreground/60 text-[10px] uppercase tracking-[0.2em] font-semibold">
+                <span>← Swipe to Tour →</span>
+              </div>
+            </div>
+
           </FadeIn>
 
         </div>
       </div>
+      
+      {/* Hide scrollbars for the carousel */}
+      <style>{`
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }
