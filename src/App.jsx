@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/home/Hero';
 import PageHeader from './components/layout/PageHeader';
 import { useIsMobile } from './hooks/use-mobile';
+import PremiumLoader from './components/ui/PremiumLoader';
 
 // Lazy-load all below-fold sections — keeps the initial JS bundle small
 const Philosophy = lazy(() => import('./components/sections/home/Philosophy'));
@@ -25,6 +26,7 @@ const SectionFallback = () => <div className="min-h-[40px]" aria-hidden="true" /
 
 function App() {
   const isMobile = useIsMobile();
+  const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -143,6 +145,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground transition-colors duration-300 flex flex-col font-sans relative">
+      <PremiumLoader onComplete={() => setLoading(false)} duration={2000} />
       {/* Global Luxury Glassy Background Video (Home Page Only) */}
       {currentPage === 'home' && !isMobile && (
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none" aria-hidden="true">
@@ -352,7 +355,7 @@ function App() {
 
       {/* Floating Action Buttons */}
       <Suspense fallback={null}>
-        <FloatingActions />
+        <FloatingActions loading={loading} />
       </Suspense>
 
       {/* Global Page Footer */}
