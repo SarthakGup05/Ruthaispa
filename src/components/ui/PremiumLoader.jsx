@@ -31,16 +31,19 @@ export default function PremiumLoader({
   // Handle auto-completion if used as a preloader
   useEffect(() => {
     if (!onComplete) return;
+    let unmountTimer;
     const fadeTimer = setTimeout(() => {
       setIsFadingOut(true);
       // Wait for the opacity fade transition to finish (700ms) before unmounting
-      const unmountTimer = setTimeout(() => {
+      unmountTimer = setTimeout(() => {
         setIsVisible(false);
         onComplete();
       }, 700);
-      return () => clearTimeout(unmountTimer);
     }, duration);
-    return () => clearTimeout(fadeTimer);
+    return () => {
+      clearTimeout(fadeTimer);
+      if (unmountTimer) clearTimeout(unmountTimer);
+    };
   }, [onComplete, duration]);
 
   if (!isVisible) return null;
