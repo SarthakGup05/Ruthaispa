@@ -72,11 +72,11 @@ function Footer({ setCurrentPage, setSelectedService }) {
             <a
               id="footer-contact-email"
               data-testid="footer-contact-email"
-              href="mailto:bookings@ruathaispa.com"
+              href="mailto:Keshahair11@gmail.com"
               className="flex items-center gap-4 text-[13px] text-muted-foreground hover:text-primary transition-colors group"
             >
               <Mail className="w-4 h-4 text-primary shrink-0 group-hover:-translate-y-1 transition-transform duration-300" />
-              <span className="font-light tracking-wide">bookings@ruathaispa.com</span>
+              <span className="font-light tracking-wide">Keshahair11@gmail.com</span>
             </a>
           </address>
         </div>
