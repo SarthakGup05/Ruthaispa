@@ -24,10 +24,37 @@ const galleryItems = [
   { id: 9, src: '/gellary/IMG_1202.webp', category: 'lounges', title: 'Bamboo Meditative Alcove', desc: 'Semi-private relaxation zone lined with authentic organic bamboo partitions.' }
 ];
 
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 300 : direction < 0 ? -300 : 0,
+    opacity: 0,
+    scale: 0.95
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      x: { type: "spring", stiffness: 300, damping: 30 },
+      opacity: { duration: 0.25 }
+    }
+  },
+  exit: (direction) => ({
+    x: direction > 0 ? -300 : direction < 0 ? 300 : 0,
+    opacity: 0,
+    scale: 0.95,
+    transition: {
+      x: { type: "spring", stiffness: 300, damping: 30 },
+      opacity: { duration: 0.2 }
+    }
+  })
+};
+
 function GalleryPage() {
   const [activeTab, setActiveTab] = useState('all');
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [direction, setDirection] = useState(0);
   const isMobile = useIsMobile();
 
   // Filter gallery items based on active tab
@@ -38,6 +65,7 @@ function GalleryPage() {
   // Navigate lightbox next
   const handleNext = useCallback(() => {
     setIsZoomed(false);
+    setDirection(1);
     setLightboxIndex((prevIndex) => {
       if (prevIndex === null) return null;
       return prevIndex === filteredItems.length - 1 ? 0 : prevIndex + 1;
@@ -47,6 +75,7 @@ function GalleryPage() {
   // Navigate lightbox prev
   const handlePrev = useCallback(() => {
     setIsZoomed(false);
+    setDirection(-1);
     setLightboxIndex((prevIndex) => {
       if (prevIndex === null) return null;
       return prevIndex === 0 ? filteredItems.length - 1 : prevIndex - 1;
@@ -57,6 +86,7 @@ function GalleryPage() {
   const handleClose = useCallback(() => {
     setLightboxIndex(null);
     setIsZoomed(false);
+    setDirection(0);
   }, []);
 
   // Keyboard navigation listeners
@@ -250,70 +280,73 @@ function GalleryPage() {
             <div className="flex-grow flex items-center justify-center relative px-4 md:px-16 overflow-hidden">
               
               {/* Prev Button */}
-              {!isMobile && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrev();
-                  }}
-                  className="absolute left-6 p-4 rounded-full bg-white/5 border border-white/10 text-white/80 hover:bg-white/15 hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer z-20"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-              )}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+                className="absolute left-3 md:left-6 p-2.5 md:p-4 rounded-full bg-black/45 md:bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-black/65 md:hover:bg-white/15 active:scale-95 transition-all cursor-pointer z-30 flex items-center justify-center"
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={isMobile ? 18 : 24} />
+              </button>
 
               {/* Central Image Container */}
-              <div className="w-full h-full max-w-5xl max-h-[70vh] flex items-center justify-center relative">
-                <motion.div
-                  key={activeImage.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: isZoomed ? 1.5 : 1,
-                    // If zoomed, allow panning around, else allow swiping
-                    x: 0,
-                    y: 0
-                  }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ type: "spring", damping: 25, stiffness: 220 }}
-                  drag={isZoomed ? true : "x"}
-                  dragConstraints={
-                    isZoomed 
-                      ? { left: -250, right: 250, top: -200, bottom: 200 }
-                      : { left: 0, right: 0 }
-                  }
-                  dragElastic={isZoomed ? 0.25 : 0.4}
-                  onDragEnd={(event, info) => {
-                    if (isZoomed) return; // Do not trigger swipe navigation when zoomed
-                    if (info.offset.x < -60) {
-                      handleNext();
-                    } else if (info.offset.x > 60) {
-                      handlePrev();
+              <div className="w-full h-full max-w-5xl max-h-[70vh] flex items-center justify-center relative overflow-hidden">
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                  <motion.div
+                    key={activeImage.id}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate={{ 
+                      opacity: 1, 
+                      scale: isZoomed ? 1.5 : 1,
+                      x: 0,
+                      y: 0
+                    }}
+                    exit="exit"
+                    transition={{ type: "spring", damping: 25, stiffness: 220 }}
+                    drag={isZoomed ? true : "x"}
+                    dragConstraints={
+                      isZoomed 
+                        ? { left: -250, right: 250, top: -200, bottom: 200 }
+                        : { left: 0, right: 0 }
                     }
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                  className={`relative max-w-full max-h-full ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
-                >
-                  <img
-                    src={activeImage.src}
-                    alt={activeImage.title}
-                    className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-white/5 pointer-events-none"
-                  />
-                </motion.div>
+                    dragElastic={isZoomed ? 0.25 : 0.6}
+                    onDragEnd={(event, info) => {
+                      if (isZoomed) return;
+                      const swipeThreshold = 50;
+                      const swipeVelocityThreshold = 300;
+                      if (info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocityThreshold) {
+                        handleNext();
+                      } else if (info.offset.x > swipeThreshold || info.velocity.x > swipeVelocityThreshold) {
+                        handlePrev();
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`absolute w-full h-full flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
+                  >
+                    <img
+                      src={activeImage.src}
+                      alt={activeImage.title}
+                      className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-white/5 pointer-events-none select-none"
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
               {/* Next Button */}
-              {!isMobile && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  className="absolute right-6 p-4 rounded-full bg-white/5 border border-white/10 text-white/80 hover:bg-white/15 hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer z-20"
-                >
-                  <ChevronRight size={24} />
-                </button>
-              )}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-3 md:right-6 p-2.5 md:p-4 rounded-full bg-black/45 md:bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-black/65 md:hover:bg-white/15 active:scale-95 transition-all cursor-pointer z-30 flex items-center justify-center"
+                aria-label="Next image"
+              >
+                <ChevronRight size={isMobile ? 18 : 24} />
+              </button>
             </div>
 
             {/* Lightbox Footer Detail Overlay */}
