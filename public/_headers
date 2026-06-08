@@ -13,8 +13,18 @@
   Cache-Control: public, max-age=0, must-revalidate
 /llms.txt
   Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: text/markdown; charset=utf-8
+  X-Markdown-Tokens: 391
 /llms-full.txt
   Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: text/markdown; charset=utf-8
+  X-Markdown-Tokens: 1100
+/robots.txt
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: text/plain; charset=utf-8
+/sitemap.xml
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/xml; charset=utf-8
 
 # Global Security Headers
 /*

@@ -22,10 +22,12 @@ function markdownNegotiationPlugin() {
         const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
         if (wantsMarkdown || (isAICrawler && (parsedUrl.pathname === '/' || parsedUrl.pathname === '/index.html'))) {
           try {
-            const filePath = path.resolve(__dirname, './public/llms-full.txt');
+            const filePath = path.resolve(__dirname, './public/llms.txt');
             const markdownContent = fs.readFileSync(filePath, 'utf-8');
+            const tokenCount = Math.ceil(markdownContent.length / 4);
             
             res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+            res.setHeader('X-Markdown-Tokens', String(tokenCount));
             res.setHeader('Access-Control-Allow-Origin', '*'); // Enable cross-origin fetching for agents
             res.end(markdownContent);
             return;
