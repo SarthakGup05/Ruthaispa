@@ -13,6 +13,8 @@ const BookingPlanner = lazy(() => import('./components/sections/services/Booking
 const ContactUs = lazy(() => import('./components/sections/contact/ContactUs'));
 const FAQAccordion = lazy(() => import('./components/sections/faq/FAQAccordion'));
 const GalleryGrid = lazy(() => import('./components/sections/gallery/GalleryGrid'));
+const GalleryPage = lazy(() => import('./components/sections/gallery/GalleryPage'));
+const GalleryPreview = lazy(() => import('./components/sections/gallery/GalleryPreview'));
 const PrivacyPolicy = lazy(() => import('./components/sections/legal/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./components/sections/legal/TermsOfService'));
 const Footer = lazy(() => import('./components/layout/Footer'));
@@ -32,7 +34,7 @@ function App() {
   // Read hash fragment for initial page routing state on reload
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.replace('#', '');
-    const validPages = ['home', 'about', 'services', 'booking', 'faq', 'contact', 'privacy', 'terms'];
+    const validPages = ['home', 'about', 'services', 'booking', 'faq', 'gallery', 'contact', 'privacy', 'terms'];
     return validPages.includes(hash) ? hash : 'home';
   });
 
@@ -72,6 +74,7 @@ function App() {
       services: "Explore our signature spa treatments, including classical Swedish, deep tissue, aromatherapy, and Balinese massage therapies custom tailored for your relaxation.",
       booking: "Book your path to peace. Schedule a wellness session online at RUA Thai Spa, selecting your preferred signature massage and certified master therapist.",
       faq: "Find guidance on spa etiquette, what to wear, when to arrive, and policies to prepare for your journey into absolute serenity at RUA Thai Spa.",
+      gallery: "Immerse yourself in the visual sanctuary of RUA Thai Spa. View our premium treatment suites, calm relaxation lounges, traditional herbal foot baths, and zen meditation corners.",
       contact: "Find our luxury sanctuary at City Centre 2, Kolkata. View hours, get directions, or call our team to book your massage session directly.",
       privacy: "Review our wellness data privacy guidelines. Learn how RUA Thai Spa protects your booking records and medical health disclaimers with absolute integrity.",
       terms: "Read our sanctuary rules, cancellation policies, late arrival conditions, and traditional Nuad Thai physical therapy disclaimers at RUA Thai Spa."
@@ -83,6 +86,7 @@ function App() {
       services: "Signature Treatments & Massage Rituals | RUA Thai Spa",
       booking: "Reserve Session & Book Online | RUA Thai Spa",
       faq: "Sanctuary Guidelines & FAQs | RUA Thai Spa",
+      gallery: "Visual Sanctuary & Gallery | RUA Thai Spa",
       contact: "Find Sanctuary & Contact Us | RUA Thai Spa",
       privacy: "Privacy Policy | RUA Thai Spa",
       terms: "Terms of Service & Sanctuary Guidelines | RUA Thai Spa"
@@ -113,7 +117,7 @@ function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const validPages = ['home', 'about', 'services', 'booking', 'faq', 'contact', 'privacy', 'terms'];
+      const validPages = ['home', 'about', 'services', 'booking', 'faq', 'gallery', 'contact', 'privacy', 'terms'];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else if (!hash) {
@@ -183,8 +187,8 @@ function App() {
               {/* 3. Signature Treatments Showcase */}
               <ServiceList selectedService={selectedService} setSelectedService={setSelectedService} />
 
-              {/* 4. About Us Section */}
-              <AboutIntro />
+              {/* Gallery Preview Section */}
+              <GalleryPreview setCurrentPage={navigateToPage} />
 
               {/* Sen Line Divider */}
               <SenLines />
@@ -195,11 +199,17 @@ function App() {
               {/* Sen Line Divider */}
               <SenLines className="rotate-180" />
 
+              {/* 4. About Us Section */}
+              <AboutIntro />
+
+              {/* Sen Line Divider */}
+              <SenLines className="rotate-180" />
+
               {/* FAQ Section */}
               <FAQAccordion />
 
               {/* Sen Line Divider */}
-              <SenLines />
+              <SenLines className="rotate-180" />
 
               {/* 6. Unified Contact & Booking Section */}
               <ContactUs />
@@ -268,6 +278,21 @@ function App() {
                 />
                 <FAQAccordion />
                 <GalleryGrid />
+              </div>
+            )}
+
+            {currentPage === 'gallery' && (
+              <div id="simulated-page-gallery" className="flex flex-col">
+                <PageHeader
+                  title="Visual Sanctuary"
+                  subtitle="A curated glimpse into our therapeutic chambers and zen spaces"
+                  bgImage="/gellary/IMG_1198.webp"
+                  breadcrumbs={[{ label: "Gallery" }]}
+                  onNavigateHome={() => navigateToPage('home')}
+                  onNavigateSection={(sec) => navigateToPage(sec)}
+                  currentSection="gallery"
+                />
+                <GalleryPage />
               </div>
             )}
 

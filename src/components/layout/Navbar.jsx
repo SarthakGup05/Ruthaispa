@@ -41,6 +41,7 @@ function Navbar({ darkMode, setDarkMode, currentPage, setCurrentPage }) {
     { name: "Home", page: "home" },
     { name: "About Us", page: "about" },
     { name: "Services", page: "services" },
+    { name: "Gallery", page: "gallery" },
     { name: "Contact Us", page: "contact" },
   ];
 

@@ -91,6 +91,7 @@ function Footer({ setCurrentPage, setSelectedService }) {
               { name: 'Home', page: 'home' },
               { name: 'About Us', page: 'about' },
               { name: 'Services', page: 'services' },
+              { name: 'Gallery', page: 'gallery' },
               { name: 'Contact Us', page: 'contact' }
             ].map((item) => (
               <li key={item.page}>
@@ -172,9 +173,9 @@ function Footer({ setCurrentPage, setSelectedService }) {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Follow us on Instagram" 
-                className="w-10 h-10 rounded-full border border-border/20 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
+                className="w-10 h-10 rounded-full border border-[#833AB4]/30 flex items-center justify-center text-[#833AB4] hover:border-[#C13584]/50 hover:bg-[#C13584]/5 hover:shadow-[0_0_10px_rgba(193,53,132,0.3)] transition-all duration-300 hover:-translate-y-1 group"
               >
-                <InstagramIcon size={18} />
+                <InstagramIcon size={18} className="transition-colors duration-300 group-hover:text-[#C13584]" />
               </a>
               <a 
                 id="footer-social-whatsapp"
