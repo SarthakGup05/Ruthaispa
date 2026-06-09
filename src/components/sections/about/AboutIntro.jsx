@@ -207,7 +207,7 @@ function AboutIntro() {
                 }}
               >
                 <img
-                  src="/Interior_1.jpeg"
+                  src="/Interior_1.webp"
                   alt="RUA Thai Spa — Aesthetic Interior View 1"
                   loading="lazy"
                   decoding="async"
@@ -235,7 +235,7 @@ function AboutIntro() {
                 }}
               >
                 <img
-                  src="/Interior_2.jpeg"
+                  src="/Interior_2.webp"
                   alt="RUA Thai Spa — Luxury Interior View 2"
                   loading="lazy"
                   decoding="async"

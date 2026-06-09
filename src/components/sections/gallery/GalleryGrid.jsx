@@ -62,10 +62,11 @@ function GalleryGrid() {
               className="group relative overflow-hidden rounded-3xl bg-card border border-border/15 aspect-[4/3] flex flex-col justify-end p-4 md:p-5 hover:border-primary/30 transition-all duration-300"
             >
               
-              {/* background image */}
               <img 
                 src={item.image} 
                 alt={item.title} 
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 

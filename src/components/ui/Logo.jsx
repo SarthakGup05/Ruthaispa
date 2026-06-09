@@ -4,7 +4,7 @@ export default function Logo({ className, showText = true, ...props }) {
   if (!showText) {
     return (
       <img
-        src="/logo_new.png"
+        src="/logo_new.webp"
         alt="RUA Thai Spa"
         className={className}
         {...props}
@@ -15,7 +15,7 @@ export default function Logo({ className, showText = true, ...props }) {
   return (
     <div className={`flex flex-col items-center text-center ${className}`} {...props}>
       <img
-        src="/logo_new.png"
+        src="/logo_new.webp"
         alt="RUA Thai Spa"
         className="w-24 h-24 object-contain mb-4"
       />
