@@ -128,22 +128,22 @@ export default function PremiumLoader({
         {/* Custom CSS for loaders */}
         <style>{`
           @keyframes lotus-bloom {
-            0% { transform: scale(0.9) rotate(-3deg); }
-            50% { transform: scale(1.03) rotate(3deg); }
-            100% { transform: scale(0.9) rotate(-3deg); }
+            0% { transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -3deg); }
+            50% { transform: scale3d(1.03, 1.03, 1) rotate3d(0, 0, 1, 3deg); }
+            100% { transform: scale3d(0.9, 0.9, 1) rotate3d(0, 0, 1, -3deg); }
           }
           @keyframes petal-pulse {
             0%, 100% { fill-opacity: 0.05; }
             50% { fill-opacity: 0.15; }
           }
           @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; transform: scale(0.95); }
-            50% { opacity: 0.8; transform: scale(1.05); }
+            0%, 100% { opacity: 0.5; transform: scale3d(0.95, 0.95, 1); }
+            50% { opacity: 0.8; transform: scale3d(1.05, 1.05, 1); }
           }
           @keyframes ripple-expand {
-            0% { transform: scale(0.5); opacity: 0; }
+            0% { transform: scale3d(0.5, 0.5, 1); opacity: 0; }
             10% { opacity: 0.6; }
-            100% { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale3d(1.6, 1.6, 1); opacity: 0; }
           }
           .animate-lotus-bloom {
             animation: lotus-bloom 6s ease-in-out infinite;
@@ -169,8 +169,8 @@ export default function PremiumLoader({
             animation: message-fade 1.8s ease-in-out infinite;
           }
           @keyframes message-fade {
-            0%, 100% { opacity: 0; transform: translateY(5px); }
-            15%, 85% { opacity: 1; transform: translateY(0); }
+            0%, 100% { opacity: 0; transform: translate3d(0, 5px, 0); }
+            15%, 85% { opacity: 1; transform: translate3d(0, 0, 0); }
           }
         `}</style>
       </div>

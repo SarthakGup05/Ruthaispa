@@ -194,9 +194,9 @@ function PageHeader({
       {/* Keyframes for premium animations */}
       <style>{`
         @keyframes kenburns {
-          0% { transform: scale(1.04) translate(0px, 0px); }
-          50% { transform: scale(1.09) translate(6px, -4px); }
-          100% { transform: scale(1.04) translate(0px, 0px); }
+          0% { transform: scale3d(1.04, 1.04, 1) translate3d(0px, 0px, 0); }
+          50% { transform: scale3d(1.09, 1.09, 1) translate3d(6px, -4px, 0); }
+          100% { transform: scale3d(1.04, 1.04, 1) translate3d(0px, 0px, 0); }
         }
         .animate-ken-burns {
           animation: kenburns 22s ease-in-out infinite;
