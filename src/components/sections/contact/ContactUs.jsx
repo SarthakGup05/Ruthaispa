@@ -1,5 +1,5 @@
-import React from "react";
-import { Phone, MapPin, Clock } from "lucide-react";
+import React, { useState } from "react";
+import { Phone, MapPin, Clock, ExternalLink } from "lucide-react";
 import { Whatsapp } from "../../icons/whatsapp";
 import PetalDivider from "../../ui/PetalDivider";
 import MandalaWatermark from "../../graphics/MandalaWatermark";
@@ -7,6 +7,9 @@ import IncenseSmoke from "../../graphics/IncenseSmoke";
 import { FadeIn, StaggerContainer, StaggerItem } from "../../ui/motion";
 
 export default function ContactUs() {
+  const [activeView, setActiveView] = useState("map");
+  const [hasToggled, setHasToggled] = useState(false);
+
   return (
     <section
       id="contact"
@@ -34,26 +37,82 @@ export default function ContactUs() {
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Left Side: Picture panel */}
+          {/* Left Side: Picture/Map toggleable panel */}
           <FadeIn
             direction="right"
-            className="lg:col-span-6 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group"
+            className="lg:col-span-6 relative rounded-3xl overflow-hidden aspect-[4/3] border border-border/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] group min-h-[300px]"
           >
-            {/* Background Zooming Spa Image */}
-            <img
-              src="/receptionist_rua.webp"
-              alt="RUA Thai Spa Guest Relations Receptionist"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            {/* Elegant luxury gold-glass overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-10" />
+            {/* View Toggle Control Pill */}
+            <div className="absolute top-4 right-4 z-30 bg-card/90 dark:bg-card/75 backdrop-blur-md border border-border/25 rounded-full p-1 flex items-center shadow-lg transition-all duration-300">
+              <button
+                onClick={() => {
+                  setActiveView("photo");
+                  setHasToggled(true);
+                }}
+                onMouseEnter={() => setHasToggled(true)}
+                className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95 ${
+                  activeView === "photo"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {!hasToggled && (
+                  <span className="relative flex h-1.5 w-1.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+                  </span>
+                )}
+                Sanctuary
+              </button>
+              <button
+                onClick={() => {
+                  setActiveView("map");
+                  setHasToggled(true);
+                }}
+                onMouseEnter={() => setHasToggled(true)}
+                className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95 ${
+                  activeView === "map"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Map
+              </button>
+            </div>
 
-            {/* Tiny visual badge inside image */}
-            <div className="absolute bottom-6 left-6 bg-card/85 dark:bg-card/60 backdrop-blur-md border border-border/25 px-4 py-2.5 rounded-2xl z-20 flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] uppercase tracking-wider font-semibold text-foreground">
-                Sanctuary Reception
-              </span>
+            {/* Photo View */}
+            <div className={`w-full h-full absolute inset-0 transition-opacity duration-500 ease-in-out ${activeView === "photo" ? "opacity-100 z-10" : "opacity-0 pointer-events-none -z-10"}`}>
+              {/* Background Zooming Spa Image */}
+              <img
+                src="/receptionist_rua.webp"
+                alt="RUA Thai Spa Guest Relations Receptionist"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Elegant luxury gold-glass overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-10" />
+
+              {/* Tiny visual badge inside image */}
+              <div className="absolute bottom-6 left-6 bg-card/85 dark:bg-card/60 backdrop-blur-md border border-border/25 px-4 py-2.5 rounded-2xl z-20 flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-foreground">
+                  Sanctuary Reception
+                </span>
+              </div>
+            </div>
+
+            {/* Map View */}
+            <div className={`w-full h-full absolute inset-0 transition-opacity duration-500 ease-in-out bg-card ${activeView === "map" ? "opacity-100 z-10" : "opacity-0 pointer-events-none -z-10"}`}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.4795329712763!2d88.44781427602324!3d22.622877930777598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89f4bdedfa65f%3A0xf0375f50235da719!2sRua%20Thai%20Spa!5e0!3m2!1sen!2sin!4v1717961234567!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="RUA Thai Spa Map Location"
+                className="w-full h-full"
+              />
             </div>
           </FadeIn>
 
@@ -87,9 +146,31 @@ export default function ContactUs() {
                   <span className="text-foreground text-sm leading-relaxed font-light block">
                     RUA Thai Spa, Kolkata
                   </span>
-                  <span className="text-muted-foreground text-xs font-light block">
+                  <span className="text-muted-foreground text-xs font-light block mb-2">
                     Shop No. B216, 2nd Floor, City Centre 2, Kolkata - 700157
                   </span>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => {
+                        setActiveView("map");
+                        setHasToggled(true);
+                      }}
+                      className="text-[11px] text-primary hover:text-primary/80 transition-colors uppercase tracking-wider font-semibold flex items-center gap-1.5 cursor-pointer bg-transparent border-0 p-0"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      Show on Map
+                    </button>
+                    <span className="text-border/40 text-xs">|</span>
+                    <a
+                      href="https://maps.app.goo.gl/8sbdzuc8bSzFCSb5A"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider font-semibold flex items-center gap-1.5"
+                    >
+                      Get Directions
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
                 </div>
               </StaggerItem>
 
